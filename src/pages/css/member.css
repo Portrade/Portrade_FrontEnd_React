@@ -1,15 +1,15 @@
-.register-box {
+.member-box {
     display: flex;
 }
 
-.register-box * {
+.member-box * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.register-left-box,
-.register-right-box {
+.member-left-box,
+.member-right-box {
     height: 100vh;
     background-color: #0000006b;
     display: flex;
@@ -19,62 +19,77 @@
     align-items: center;
 }
 
-.register-right-box * {
+.member-left-box * {
     width: 478px;
 }
 
-.register-logo-text {
+.member-logo-text {
     font: normal normal normal 50px/72px AppleSDGothicNeoEB00;
     color: #01c1c6;
     margin-bottom: 70px;
 }
 
-.register-intro-text {
+.member-intro-text {
     font: normal normal normal 35px/50px AppleSDGothicNeoSB00;
     color: #ffffff;
     margin-bottom: 50px;
 }
 
-.register-slogan-text {
+.member-slogan-text {
     font: normal normal normal 15px/25px AppleSDGothicNeoM00;
     color: #ffffff;
     margin-bottom: 30px;
 }
-
-.register-more-info-text {
+.member-more-info-text {
     font: normal normal normal 13px/45px AppleSDGothicNeoM00;
     color: #ffffff;
     margin-bottom: 50px;
 }
-.register-left-box {
+
+.member-btn-register {
+    color: #487498;
+    height: 45px;
     background-color: #ffffff;
-    flex: 2;
+    box-shadow: 0px 2px 5px #00000033;
+    border-radius: 10px;
+    text-align: center;
+    font: normal normal normal 15px/38px AppleSDGothicNeoB00;
+    line-height: 45px;
 }
 
-.register-left-box > div,
-.register-left-box > fieldset {
+.member-right-box {
+    background-color: #ffffff;
+    flex: 4;
+}
+
+.member-right-box > div,
+.member-right-box > fieldset {
     width: 440px;
 }
 
-.register-text {
+.member-text {
     color: #487498;
     font: normal normal normal 40px/57px AppleSDGothicNeoEB00;
 }
 
-.register-intro {
+.member-intro {
     font: normal normal normal 15px/25px AppleSDGothicNeoR00;
     color: #000000;
     margin-bottom: 27px;
 }
 
-.register-fieldset {
+.member-fieldset {
     box-shadow: 0px 2px 5px #00000029;
     border: 1px solid #c9c9c9;
     border-radius: 5px;
-    margin-bottom: 30px;
+    margin-bottom: 29px;
 }
 
-.register-fieldset legend {
+.school-fieldset {
+    margin-bottom: 10px;
+}
+
+.member-fieldset legend {
     font: normal normal normal 13px/38px AppleSDGothicNeoR00;
     letter-spacing: 0px;
     color: #999999;
@@ -84,32 +99,53 @@
     padding: 0 24px;
 }
 
-.register-input {
+.member-input {
     border: none;
-    border-bottom: 0 0 1px 0;
-    border-bottom-style: solid;
-    border-block-color: #c9c9c9;
-    border-bottom-width: 1px;
-    border-radius: 5px;
     outline: none;
     height: 40px;
     width: 100%;
     font: normal normal normal 13px/38px AppleSDGothicNeoR00;
     padding-left: 24px;
 }
-.password-option {
+
+.member-btn-start {
+    margin-top: 2px;
+    margin-bottom: 17px;
+    height: 45px;
+    background: #22334d 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px #00000033;
+    text-align: center;
+    font: normal normal normal 15px/38px AppleSDGothicNeoB00;
+    color: #ffffff;
+    line-height: 45px;
+    cursor: pointer;
+}
+
+.member-graduation-checkbox {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
+    margin-right: 20px;
+    gap: 10px;
+    font-weight: 600;
+    font: normal normal normal 15px/38px AppleSDGothicNeoSB00;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.member-agree-option {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin-top: -18px;
     margin-bottom: 15px;
 }
 
-.password-option > div {
-    height: 15px;
-    display: flex;
-}
-.password-info {
+.member-info-agree,
+.member-agree-content {
     font: normal normal normal 12px/20px AppleSDGothicNeoSB00;
     color: #000000;
     border: none;
@@ -117,20 +153,5 @@
     height: 15px;
     line-height: 15px;
     margin-left: 12px;
-    cursor: pointer;
-}
-
-.btn-register {
-    margin-top: 2px;
-    margin-bottom: 17px;
-    height: 45px;
-    background: #ffffff 0% 0% no-repeat padding-box;
-    box-shadow: 0px 2px 5px #00000033;
-    border-radius: 10px;
-    border: 1px solid #22334d;
-    text-align: center;
-    font: normal normal normal 15px/38px AppleSDGothicNeoB00;
-    color: #22334d;
-    line-height: 45px;
     cursor: pointer;
 }

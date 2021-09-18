@@ -3,6 +3,7 @@ export { default as Home } from "./Home";
 export { default as Portfolio } from "./Portfolio";
 export { default as Suggestion } from "./Suggestion";
 export { default as Login } from "./Login";
+export { default as Member } from "./Member";
 export { default as Register } from "./Register";
 export { default as Help } from "./Help";
 export { default as Mypage } from "./Mypage";
