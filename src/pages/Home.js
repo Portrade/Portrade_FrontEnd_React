@@ -25,9 +25,21 @@ const Home = () => {
     ]);
 
     const [slogans, setSlogans] = useState([
-        { id: 1, imgUrl: require("../images/home/slogan_1.png").default, text: "포트폴리오 JPG 변환" },
-        { id: 2, imgUrl: require("../images/home/slogan_2.png").default, text: "포트폴리오 업로드" },
-        { id: 3, imgUrl: require("../images/home/slogan_3.png").default, text: "설명과 세부 내용 추가 및 SNS 연동" },
+        {
+            id: 1,
+            imgUrl: require("../images/home/slogan_1.png").default,
+            text: "포트폴리오 JPG 변환",
+        },
+        {
+            id: 2,
+            imgUrl: require("../images/home/slogan_2.png").default,
+            text: "포트폴리오 업로드",
+        },
+        {
+            id: 3,
+            imgUrl: require("../images/home/slogan_3.png").default,
+            text: "설명과 세부 내용 추가 및 SNS 연동",
+        },
     ]);
     const [carousels, setCarousels] = useState([
         {
@@ -51,7 +63,11 @@ const Home = () => {
         switch (button.id) {
             case 1:
                 return (
-                    <Link to="/portfolio/register" className="home-button" key={button.id}>
+                    <Link
+                        to="/portfolio/register"
+                        className="home-button"
+                        key={button.id}
+                    >
                         {button.text}
                     </Link>
                 );
@@ -157,11 +173,25 @@ const Home = () => {
                     <div className="home-about-title">PORTRADE</div>
                     <div className="home-about-desc">
                         <div className="home-about-subtitle"> 'PORTFOLIO' + 'TRADE'</div>
-                        <div> 포트레이트는 '포트폴리오(Portfolio)'와 '트레이드(Trade)'를 결합한 합성어 입니다.</div>
+                        <div>
+                            {" "}
+                            포트레이트는 '포트폴리오(Portfolio)'와 '트레이드(Trade)'를
+                            결합한 합성어 입니다.
+                        </div>
                         <br />
-                        <div>코로나 19로 인해, 더욱 치열해진 취업 난 속에서 청년을 도와주는 사이트 입니다.</div>
-                        <div>포트폴리오에는 개인의 개성과 열정이 담겨져 있습니다. 이런 개성이 담긴 작품은 한 사람을 대변합니다.</div>
-                        <div>포트레이트는 여러분의 개성이 담긴 포트폴리오를 화가의 혼이 담긴 초상화처럼 여깁니다. 여러분의 소중한 초상화를 기업에게 전달해드리겠습니다.</div>
+                        <div>
+                            코로나 19로 인해, 더욱 치열해진 취업 난 속에서 청년을 도와주는
+                            사이트 입니다.
+                        </div>
+                        <div>
+                            포트폴리오에는 개인의 개성과 열정이 담겨져 있습니다. 이런
+                            개성이 담긴 작품은 한 사람을 대변합니다.
+                        </div>
+                        <div>
+                            포트레이트는 여러분의 개성이 담긴 포트폴리오를 화가의 혼이
+                            담긴 초상화처럼 여깁니다. 여러분의 소중한 초상화를 기업에게
+                            전달해드리겠습니다.
+                        </div>
                     </div>
                     <Link to="/introduce">
                         <div className="home-detail-btn">플랫폼 자세히 보기</div>
@@ -170,9 +200,13 @@ const Home = () => {
             </div>
             <div className="home-howTo-box">
                 <div className="home-howTo-title">How To?</div>
-                <div className="home-howTo-desc">포트폴리오 등록은 어떻게 진행되나요?</div>
+                <div className="home-howTo-desc">
+                    포트폴리오 등록은 어떻게 진행되나요?
+                </div>
                 <div className="home-howTo-detail">
-                    <div>포트레이트는 파일 업로드를 통하여 간편한 등록이 가능합니다. </div>
+                    <div>
+                        포트레이트는 파일 업로드를 통하여 간편한 등록이 가능합니다.{" "}
+                    </div>
                     <div>여러분의 개성넘치는 포트폴리오를 업로드 해보세요.</div>
                 </div>
             </div>
@@ -183,7 +217,8 @@ const Home = () => {
             <div className="home-adv-content">
                 <div className="home-first-adv">
                     <div className="home-portfolioEx-title">
-                        <span className="home-focus">PORTRADE</span>는 취업난 속에서 기업과 청년의 연결을 도모합니다.
+                        <span className="home-focus">PORTRADE</span>는 취업난 속에서
+                        기업과 청년의 연결을 도모합니다.
                     </div>
                     <div className="home-portfolioEx-desc">
                         <div> 포트레이트를 이용한 사례 포트레이트를 이용한 사례</div>
@@ -194,11 +229,20 @@ const Home = () => {
 
                 <div className="home-second-adv">
                     <div className="home-portfolioEx-title">
-                        <span className="home-focus">000,000</span> 명이 PORTRADE와 함께합니다.
+                        <span className="home-focus">000,000</span> 명이 PORTRADE와
+                        함께합니다.
                     </div>
                     <div className="home-portfolioEx-desc">
-                        <div> 포트레이트는 '포폴리오(Portfolio)'와 '트레이드(Trade)'를 결합한 합성어 입니다.</div>
-                        <div> 포트레이트는 '포폴리오(Portfolio)'와 '트레이드(Trade)'를 결합한 합성어 입니다.</div>
+                        <div>
+                            {" "}
+                            포트레이트는 '포폴리오(Portfolio)'와 '트레이드(Trade)'를
+                            결합한 합성어 입니다.
+                        </div>
+                        <div>
+                            {" "}
+                            포트레이트는 '포폴리오(Portfolio)'와 '트레이드(Trade)'를
+                            결합한 합성어 입니다.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -209,19 +253,25 @@ const Home = () => {
                         <div className="home-portfolio-thumbnail"></div>
                         <div className="home-portfolio-title">포트폴리오 제목</div>
                         <div className="home-portfolio-username">포트폴리오 제작사</div>
-                        <div className="home-portfolio-time">업로드 날짜와 시각(20XX-XX-XX)</div>
+                        <div className="home-portfolio-time">
+                            업로드 날짜와 시각(20XX-XX-XX)
+                        </div>
                     </div>
                     <div className="home-portfolio">
                         <div className="home-portfolio-thumbnail"></div>
                         <div className="home-portfolio-title">포트폴리오 제목</div>
                         <div className="home-portfolio-username">포트폴리오 제작사</div>
-                        <div className="home-portfolio-time">업로드 날짜와 시각(20XX-XX-XX)</div>
+                        <div className="home-portfolio-time">
+                            업로드 날짜와 시각(20XX-XX-XX)
+                        </div>
                     </div>
                     <div className="home-portfolio">
                         <div className="home-portfolio-thumbnail"></div>
                         <div className="home-portfolio-title">포트폴리오 제목</div>
                         <div className="home-portfolio-username">포트폴리오 제작사</div>
-                        <div className="home-portfolio-time">업로드 날짜와 시각(20XX-XX-XX)</div>
+                        <div className="home-portfolio-time">
+                            업로드 날짜와 시각(20XX-XX-XX)
+                        </div>
                     </div>
                 </div>
             </div>
@@ -239,16 +289,20 @@ const Home = () => {
                     <p>NOTICE</p>
                     <div className="home-info-line"></div>
                     <p>
-                        코로나 19 사태로 인해 취업이 어려워진 지금, 취업 준비생에게 도움을 줄 수 있는 사이트를 개발 <br />
-                        코로나 19 사태로 인해 취업이 어려워진 지금, 취업 준비생에게 도움을 줄 수 있는 사이트를 개발
+                        코로나 19 사태로 인해 취업이 어려워진 지금, 취업 준비생에게 도움을
+                        줄 수 있는 사이트를 개발 <br />
+                        코로나 19 사태로 인해 취업이 어려워진 지금, 취업 준비생에게 도움을
+                        줄 수 있는 사이트를 개발
                     </p>
                 </div>
                 <div className="home-info-content">
                     <p>FAQ</p>
                     <div className="home-info-line"></div>
                     <p>
-                        코로나 19 사태로 인해 취업이 어려워진 지금, 취업 준비생에게 도움을 줄 수 있는 사이트를 개발 <br />
-                        코로나 19 사태로 인해 취업이 어려워진 지금, 취업 준비생에게 도움을 줄 수 있는 사이트를 개발
+                        코로나 19 사태로 인해 취업이 어려워진 지금, 취업 준비생에게 도움을
+                        줄 수 있는 사이트를 개발 <br />
+                        코로나 19 사태로 인해 취업이 어려워진 지금, 취업 준비생에게 도움을
+                        줄 수 있는 사이트를 개발
                     </p>
                 </div>
             </div>
