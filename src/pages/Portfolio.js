@@ -43,18 +43,18 @@ const Portfolio = () => {
         }
     };
     const PortfolioButtonList = name.map((name) => {
-        if(name.id === 1){
+        if (name.id === 1) {
             return (
                 <Link to="/portfolio/register" className="portfolio-options-button" key={name.id}>
                     {name.text}
                 </Link>
-            )
-        }else {
+            );
+        } else {
             return (
                 <div className="portfolio-options-button" key={name.id}>
                     {name.text}
                 </div>
-            )
+            );
         }
     });
 
@@ -100,14 +100,20 @@ const Portfolio = () => {
             </div>
             <div className="portfolio-sort">
                 <p className="portfolio-section-name">정렬 기준</p>
-                <form>
-                    <input type="text" placeholder="포트폴리오 검색" />
-                    <label htmlFor="category">분야 ▽</label>
-                    <input type="checkbox" id="category" />
-                    <label htmlFor="order-asc">가나다순 ▽</label>
-                    <input type="checkbox" id="order-asc" />
-                    <label htmlFor="lookup">조회순 ▽</label>
-                    <input type="checkbox" id="lookup" />
+                <form className="portfolio-form">
+                    <input className="portfolio-input" type="text" placeholder="포트폴리오 검색" />
+                    <label className="portfolio-label" htmlFor="category">
+                        분야 ▽
+                    </label>
+                    <input className="portfolio-input" type="checkbox" id="category" />
+                    <label className="portfolio-label" htmlFor="order-asc">
+                        가나다순 ▽
+                    </label>
+                    <input className="portfolio-input" type="checkbox" id="order-asc" />
+                    <label className="portfolio-label" htmlFor="lookup">
+                        조회순 ▽
+                    </label>
+                    <input className="portfolio-input" type="checkbox" id="lookup" />
                 </form>
 
                 <div className="portfolio-options-button-wrap">{PortfolioButtonList}</div>
