@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ActionCreators from "../../_actions";
 import { useDispatch, useSelector } from "react-redux";
 import { GoogleLogout } from "react-google-login";
+import search_icon from "../../images/header/search_icon.png";
 
 import "./css/header.css";
 
@@ -43,7 +44,7 @@ const Header = () => {
 
             <div className="search-wrap">
                 <input type="text" />
-                <button>search</button>
+                <button><img src={search_icon} alt="search icon" /></button>
             </div>
 
             <div className="nav-bar">
