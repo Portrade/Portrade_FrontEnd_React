@@ -17,18 +17,20 @@ const BoardItem = ({ title, num, date }) => {
 const Notice = () => {
     const boardData = [
         { title: "예시용 데이터입니다.", date: "2021-01-01" },
-        { title: "예시용 데이터입니다.", date: "2021-01-01" },
-        { title: "예시용 데이터입니다.", date: "2021-01-01" },
+        { title: "제목 검색", date: "2021-01-01" },
+        { title: "공지사항2", date: "2021-01-01" },
     ];
-    const [searchVal, setSearchVal] = useState();
+    const [inputVal, setinputVal] = useState();
+    const [searchVal, setSearchVal] = useState("");
 
     const inputHandler = ({ target: { value } }) => {
-        setSearchVal(value);
+        setinputVal(value);
     };
 
     const submitHandler = (e) => {
+        setSearchVal(inputVal);
         e.preventDefault();
-        setSearchVal("");
+        setinputVal("");
     };
 
     return (
@@ -38,13 +40,7 @@ const Notice = () => {
                 <p className="notice-text">공지사항</p>
 
                 <form className="notice-search-wrap" onSubmit={(e) => submitHandler(e)}>
-                    <input
-                        className="notice-search-input"
-                        type="text"
-                        placeholder="검색어를 입력해주세요"
-                        onChange={(e) => inputHandler(e)}
-                        value={searchVal}
-                    ></input>
+                    <input className="notice-search-input" type="text" placeholder="검색어를 입력해주세요" onChange={(e) => inputHandler(e)} value={inputVal}></input>
                     <i className="notice-search-icon" alt="search_black" />
                 </form>
 
@@ -55,9 +51,11 @@ const Notice = () => {
                     <span>등록일</span>
                 </div>
                 <div className="notice-category-line"></div>
-                {boardData.map((item, index) => (
-                    <BoardItem title={item.title} date={item.date} num={index} />
-                ))}
+                {boardData
+                    .filter((item) => item.title.includes(searchVal))
+                    .map((item, index) => (
+                        <BoardItem title={item.title} date={item.date} num={index} />
+                    ))}
                 <div className="notice-page-btn">
                     <button className="notice-page-prevbtn">&lt;</button>
                     <button className="notice-page-prevbtn">1</button>
