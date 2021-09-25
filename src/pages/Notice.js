@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./css/notice.css";
 
 const BoardItem = ({ title, num, date }) => {
@@ -36,7 +37,7 @@ const Notice = () => {
     return (
         <div className="notice-wrap">
             <div className="notice-board">
-                <div className="notice-route">홈 > 고객센터 > 공지사항</div>
+                <div className="notice-route">홈 &nbsp;&gt;&nbsp; 고객센터 &nbsp; &gt;&nbsp; 공지사항</div>
                 <p className="notice-text">공지사항</p>
 
                 <form className="notice-search-wrap" onSubmit={(e) => submitHandler(e)}>
@@ -54,7 +55,9 @@ const Notice = () => {
                 {boardData
                     .filter((item) => item.title.includes(searchVal))
                     .map((item, index) => (
-                        <BoardItem title={item.title} date={item.date} num={index} />
+                        <Link to={`notice/${index}`}>
+                            <BoardItem title={item.title} date={item.date} num={index} />
+                        </Link>
                     ))}
                 <div className="notice-page-btn">
                     <button className="notice-page-prevbtn">&lt;</button>
