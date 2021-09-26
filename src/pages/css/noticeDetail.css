@@ -45,5 +45,6 @@
 
 .noticeDetail-main {
     margin-left: 8%;
-    width: 60%;
+    width: 84%;
+    word-break: break-all;
 }
