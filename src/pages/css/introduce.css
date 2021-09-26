@@ -1,189 +1,164 @@
-.introduce-container {
+.introduce {
     width: 100%;
-    text-align: center;
     margin-top: 60px;
     word-break: keep-all;
+    font: 1.2rem/2rem AppleSDGothicNeoM00;
 }
-.introduce-box {
-    box-sizing: border-box;
+
+
+.introduce-banner {
     width: 100%;
-    height: 350px;
-    background: #cccccc 0% 0% no-repeat padding-box;
+    background: #22334D 0% 0% no-repeat padding-box;
+    padding: 10em 0;
+    margin-bottom: 9em;
 }
-.introduce-intro-box {
-    margin: 0 auto;
-    margin-top: 150px;
-    width: 60%;
-    opacity: 1;
-    text-align: left;
-    line-height: 1;
+.introduce-banner-wrap {
+    width: 70%;
+    max-width: 1400px;
+    
+    margin: auto;
     display: flex;
-    color: #707070;
+    justify-content: space-between;
+}
+.introduce-banner-slogan {
+    text-align: left;
+    font: normal normal normal 2.5rem/3.5rem AppleSDGothicNeoM00;
+    color: #FFFFFF;
+}
+.introduce-banner-name {
+    font: normal normal normal 5em AppleSDGothicNeoEB00; /* 5em/7em */
+    color: #0AC3C8;
+    margin-left: 1em;
 }
 
-.introduce-intro-content {
-    color: #000000;
-    letter-spacing: 0px;
-    margin: auto ;
+
+.introduce-wrap {
+    width: 90%;
+    max-width: 1500px;
+    min-width: 1350px; 
+
+    margin: auto;
+    text-align: center;
 }
 
-.introduce-first_intro-desc {
-    width: 300px;
-    height: 165px;
-    margin-right: 110px;
+
+.introduce-intro-box {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 9em;
+    
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.introduce-intro-first-desc {
+    width: 30%;
     font: normal normal normal 40px/55px AppleSDGothicNeoEB00;
 }
-
-.introduce-focus {
+.introduce-intro-first-desc span {
     color: #0AC3C8;
 }
-
-.introduce-second_intro-desc {
-    width: 100%;
+.introduce-intro-second-desc {
+    width: 70%;
+    margin-left: 1em;
     font: normal normal normal 20px/35px AppleSDGothicNeoM00;
 }
+
 
 .introduce-vision-box {
-    margin: 0 auto;
-    margin-top: 150px;
-    width: 70%;
-    max-width: 1290px;
-    opacity: 1;
+    width: 80%;
+    margin: auto;
     text-align: left;
-    line-height: 1;
     display: flex;
+    justify-content: space-between;
+    margin-bottom: 4em;
 }
-
-.introduce-vision-content {
+.introduce-vision-content-first {
     width: 48%;
-    height: 450px;
-    margin: 0 auto;
     background-color: #F3F3F3; 
-    letter-spacing: 0px;
+    font: normal normal normal 2.5rem AppleSDGothicNeoEB00; /* 40px/55px */
 }
-
-.introduce-vision-content:first-child {
-    margin-left: 0;
-}
-
-.introduce-vision-content:nth-child(2) {
-    margin-right: 0;
-}
-
-.introduce-first_vision-desc {
-    background-color: #f3f3f3;
-    font: normal normal normal 40px/55px AppleSDGothicNeoEB00;
-}
-
-.introduce-second_vision-desc {
-    padding: 11% 12%;
-    height: 100%;
-    color: #FFFFFF;
+.introduce-vision-content-second {
+    width: 48%;
     background-color: #000000;
-    font: normal normal normal 20px/35px AppleSDGothicNeoM00;
+    padding: 4em 4.5em;
     box-sizing: border-box;
-}
 
-.introduce-vision-title {
     color: #FFFFFF;
-    font-size: 1.9em;
-    margin-bottom: 50px;
-    opacity: 1;
+    font: normal normal normal 1.2rem/2rem AppleSDGothicNeoM00; 
+}
+.introduce-vision-content-second div {
+    font: normal normal normal 2.5rem AppleSDGothicNeoEB00; /*40px/55px*/
+    margin-bottom: 1em;
 }
 
-.introduce-second_vision-desc div:not(:first-child) {
-    margin-bottom: 30px;
-}
 
 .introduce-catch-box {
-    margin: 0 auto;
-    width: 70%;
-    max-width: 1290px;
-    margin-top: 60px;
-    text-align: left;
-    line-height: 1;
-    display: flex;
-    color: #707070;
-}
-
-.introduce-catch-content {
-    color: #000000;
-    letter-spacing: 0px;
-}
-.introduce-catch-desc {
-    background-color: #f3f3f3;
-    margin-right: 60px;
+    width: 80%;
     margin: auto;
-    padding: 80px 15%;
+    margin-bottom: 12em;
+    padding: 5em 9em;
+    box-sizing: border-box;
+    
+    background-image: url("../../images/introduce/introduce.png");
+    box-shadow: inset 0 0 0 50vw rgba(0, 0, 0, 0.7);
+    
+    /* font-weight: ; */
+    text-align: left;
+    color: #FFFFFF;
 }
-.introduce-catch-title {
+.introduce-catch-box div {
     font: normal normal normal 40px/55px AppleSDGothicNeoEB00;
     margin-bottom: 20px;
 }
-.introduce-catch-detail {
-    font: normal normal normal 20px/35px AppleSDGothicNeoM00;
-}
+
 
 .introduce-linkerbell-box {
-    color: #000000;
-    margin-top: 200px;
+    margin-bottom: 1em;
+    font: .93rem/1.5rem AppleSDGothicNeoM00;
 }
-.introduce-linkerbell-box div {
+.introduce-linkerbell-box div:first-child {
+    font: 2.5rem/2.3rem AppleSDGothicNeoH00;
     padding: 0.3em 0;
 }
-.introduce-linkerbell-title {
-    font: normal normal normal 40px/38px AppleSDGothicNeoH00;
+.introduce-linkerbell-box div:nth-child(2) {
+    font: 1.25rem/2.3rem AppleSDGothicNeoM00;
+    padding: 0.3em 0;
 }
-.introduce-linekerbell-intro {
-    font: normal normal normal 20px/38px AppleSDGothicNeoM00;
-}
-.introduce-linkerbell-desc {
-    font: normal normal normal 15px/25px AppleSDGothicNeoM00;
-}
-.introduce-developer-container {
-    justify-content: center;
+
+
+.introduce-developer-box {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 7em;
 }
 .introduce-developer-partname {
-    width: 1200px;
-    margin: 15px auto;
     text-align: left;
-    font: normal normal normal 25px/38px AppleSDGothicNeoSB00;
+    font: 1.8rem/2.3rem AppleSDGothicNeoSB00;
+    margin-bottom: .5em;
 }
 .introduce-developer-part {
-    width: 1200px;
     display: flex;
     justify-content: space-between;
-    margin: auto;
-    margin-bottom: 45px;
+    margin-bottom: 2em;
 }
-.introduce-developer {
-    width: 375px;
-    height: 400px;
-    background-color: #e9e9e9;
-}
+
 
 .introduce-contact-box {
-    margin: 0 auto;
-    margin-top: 150px;
-    margin-bottom: 160px;
     width: 80%;
-    opacity: 1;
-    text-align: left;
-    line-height: 1;
+    margin: auto;
+    margin-bottom: 8em;
     display: flex;
+    justify-content: space-between;
+    
+    text-align: left;
     color: #707070;
 }
-
-.introduce-contact-content {
-    margin: 0px auto;
+.introduce-contact-logo {
     color: #000000;
-    letter-spacing: 0px;
-}
-.introduce-contact-nav {
-    font: normal normal normal 40px/55px AppleSDGothicNeoEB00;
+    font: 2.5rem/3.5rem AppleSDGothicNeoEB00;
 }
 .introduce-contact-detail {
-    width: 520px;
-    font: normal normal normal 20px/35px AppleSDGothicNeoM00;
-    color: #707070;
+    width: 50%;
 }

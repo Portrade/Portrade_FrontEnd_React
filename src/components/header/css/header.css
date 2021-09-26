@@ -1,5 +1,6 @@
 header {
     width: 100%;
+    min-width: 1400px;
     height: 60px;
     line-height: 60px;
     display: flex;

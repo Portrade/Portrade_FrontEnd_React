@@ -7,7 +7,10 @@ import copyright1 from "../../images/footer/copyright1.png";
 import copyright2 from "../../images/footer/copyright2.png";
 import copyright3 from "../../images/footer/copyright3.png";
 import copyright4 from "../../images/footer/copyright4.png";
-
+import facebook from "../../images/footer/facebook.png";
+import github from "../../images/footer/github.png";
+import instagram from "../../images/footer/instagram.png";
+import mail from "../../images/footer/mail.png";
 
 const Footer = () => {
 
@@ -31,19 +34,37 @@ const Footer = () => {
                 </div>
                 
                 <nav className="footer-nav-bar">
-                    <Link to="/introduce">포트레이드 소개</Link>
-                    <Link to="/portfolio">포트폴리오</Link>
-                    <Link to="/suggestion">추천기업</Link>
-                    <Link to="/help">고객센터</Link>
+                    <nav className="footer-nav-bar-col">
+                        <Link to="/introduce" className="footer-nav-bar-col-title">포트레이드 소개</Link>
+                        <Link>마이페이지</Link>
+                        <Link>포트폴리오 관리</Link>
+                    </nav>
+                    <nav className="footer-nav-bar-col">
+                        <Link to="/portfolio" className="footer-nav-bar-col-title">포트폴리오</Link>
+                        <Link>포트폴리오 등록</Link>
+                        <Link>분야별 포트폴리오</Link>
+                        <Link>제작자 검색하기</Link>
+                    </nav>
+                    <nav className="footer-nav-bar-col">
+                        <Link to="/suggestion" className="footer-nav-bar-col-title">추천기업</Link>
+                        <Link>포트레이드 추천공고</Link>
+                        <Link>분야별 공고</Link>
+                    </nav>
+                    <nav className="footer-nav-bar-col">
+                        <Link to="/help" className="footer-nav-bar-col-title footer-nav-bar-col-title-last">고객센터</Link>
+                        <Link>공지사항</Link>
+                        <Link>자주 묻는 질문</Link>
+                        <Link>1:1 문의</Link>
+                    </nav>
                 </nav>
                 
                 <div className="footer-contact">
-                    <p>CONTACT</p>
                     <div className="footer-contact-box-wrap">
-                        <div className="footer-contact-box"></div>
-                        <div className="footer-contact-box"></div>
-                        <div className="footer-contact-box"></div>
-                        <div className="footer-contact-box"></div>
+                        <div className="footer-contact-logo">CONTACT</div>
+                        <Link to=""><img src={instagram} alt="instagram" /></Link>
+                        <Link to=""><img src={facebook} alt="facebook" /></Link>
+                        <Link to=""><img src={mail} alt="mail" /></Link>
+                        <Link to=""><img src={github} alt="github" /></Link>
                     </div>
                 </div>
             </div>
