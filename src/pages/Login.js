@@ -17,13 +17,7 @@ const Login = ({ history }) => {
     };
 
     const onSuccessGoogle = async (res) => {
-        dispatch(
-            ActionCreators.login(
-                res.isSignedIn(),
-                res.Zb.access_token,
-                res.profileObj.email
-            )
-        );
+        dispatch(ActionCreators.login(res.isSignedIn(), res.Zb.access_token, res.profileObj.email));
         window.sessionStorage.setItem("access_token", res.Zb.access_token);
         // let jwtToken = await Axios.post("http://ec2-3-38-6-25.ap-northeast-2.compute.amazonaws.com:8080/oauth/jwt/google", JSON.stringify(res), config);
         // if (jwtToken.status === 200) {
@@ -66,9 +60,7 @@ const Login = ({ history }) => {
             <div className="login-right-box">
                 <div className="login-text">로그인</div>
                 <div className="login-intro">
-                    <div>
-                        포트레이트의 회원이 되시면, 포트폴리오 등록 및 기업 공고 열람
-                    </div>
+                    <div>포트레이트의 회원이 되시면, 포트폴리오 등록 및 기업 공고 열람</div>
                     <div>서비스를 간편하게 이용하실 수 있습니다.</div>
                 </div>
 
