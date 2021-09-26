@@ -63,6 +63,9 @@ const Notice = () => {
                     <button className="notice-page-prevbtn">&lt;</button>
                     <button className="notice-page-prevbtn">1</button>
                     <button className="notice-page-prevbtn">&gt;</button>
+                    <Link to={"/notice/post"}>
+                        <button className="notice-register-btn">공지사항 등록</button>
+                    </Link>
                 </div>
             </div>
         </div>

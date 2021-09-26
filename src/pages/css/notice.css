@@ -74,9 +74,6 @@
     width: 60%;
 }
 
-.notice-tab-category span:last-child {
-}
-
 .notice-tab-post {
     display: flex;
 }
@@ -117,7 +114,9 @@
 
 .notice-page-btn {
     display: flex;
+    position: relative;
     justify-content: center;
+    width: 100%;
     margin: 14px 0px 32px 0px;
 }
 
@@ -134,8 +133,23 @@
     border-radius: 5px;
 }
 
-.notice-page-prevbtn:hover {
+.notice-page-prevbtn:hover,
+.notice-register-btn:hover {
     background: #ebebeb;
+}
+
+.notice-register-btn {
+    position: absolute;
+    right: 0;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    margin: 0px 10px 0px 10px;
+    box-shadow: 0px 1px 2px #00000029;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
 }
 
 .notice-route {
