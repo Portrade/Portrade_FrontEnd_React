@@ -1,6 +1,7 @@
 .noticeDetail-wrap {
     width: 100%;
     margin-top: 130px;
+    margin-bottom: 100px;
 }
 
 .noticeDetail-board {
@@ -21,12 +22,12 @@
     height: 0px;
     border: 1px solid #000000;
     opacity: 1;
-    margin: 18px 0px 18px 0px;
+    margin: 15px 0px 15px 0px;
 }
 
 .noticeDetail-tab-category {
     display: flex;
-    font: normal normal normal 20px/25px AppleSDGothicNeoB00;
+    font: normal normal normal 15px/20px AppleSDGothicNeoB00;
     letter-spacing: 0px;
     color: #000000;
     opacity: 1;
@@ -35,6 +36,7 @@
 .noticeDetail-tab-category span:first-child {
     margin-left: 8%;
     width: 15%;
+    color: #999999;
 }
 
 .noticeDetail-tab-category span:nth-child(2) {
