@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./css/notice.css";
 
-const BoardItem = ({ title, num, date }) => {
+const BoardItem = ({ title, num, date, views }) => {
     return (
         <>
             <div className="notice-tab-post">
                 <span>{num}</span>
                 <span>{title}</span>
                 <span>{date}</span>
+                <span>{views}</span>
             </div>
             <div className="notice-tab-post-line"></div>
         </>
@@ -17,9 +18,9 @@ const BoardItem = ({ title, num, date }) => {
 
 const Notice = () => {
     const boardData = [
-        { title: "예시용 데이터입니다.", date: "2021-01-01" },
-        { title: "제목 검색", date: "2021-01-01" },
-        { title: "공지사항2", date: "2021-01-01" },
+        { title: "예시용 데이터입니다.", date: "2021-01-01", views: "12" },
+        { title: "제목 검색", date: "2021-01-01", views: "12" },
+        { title: "공지사항2", date: "2021-01-01", views: "12" },
     ];
     const [inputVal, setinputVal] = useState();
     const [searchVal, setSearchVal] = useState("");
@@ -50,13 +51,14 @@ const Notice = () => {
                     <span>NO</span>
                     <span>제목</span>
                     <span>등록일</span>
+                    <span>조회수</span>
                 </div>
                 <div className="notice-category-line"></div>
                 {boardData
                     .filter((item) => item.title.includes(searchVal))
                     .map((item, index) => (
                         <Link to={`notice/${index}`}>
-                            <BoardItem title={item.title} date={item.date} num={index} />
+                            <BoardItem title={item.title} date={item.date} num={index} views={item.views} />
                         </Link>
                     ))}
                 <div className="notice-page-btn">
