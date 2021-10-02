@@ -6,7 +6,7 @@ const defaultLoginValue = {
 
 const loginReducer = (state = defaultLoginValue, action) => {
     switch(action.type){
-        case types.LOGIN_USER:
+        case types.LOGIN_USER: // { type: types.LOGIN_USER, isLogin: true }
             console.log("------LOGIN-----");
             return state = {
                 ...state,

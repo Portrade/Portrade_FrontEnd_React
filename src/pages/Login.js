@@ -1,20 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 import ActionCreators from "../_actions";
 import { useDispatch } from "react-redux";
 import Axios from "axios";
+import { InputAdornment, Grid, IconButton, TextField } from '@material-ui/core';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff'
 
+import img from "../images/footer/instagram.png";
 import "./css/login.css";
+
+const initialState = { userId: "", password: "" };
 
 const Login = ({ history }) => {
     const dispatch = useDispatch();
+    const [showPassword, setShowPassword] = useState(false);
+    const [formData, setFormData] = useState(initialState);
 
     const config = {
         headers: {
             "Content-Type": "application/json; charset=utf-8",
         },
     };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // dispatch(ActionCreators.login());
+        ActionCreators.login(formData);
+    };
+
+    const handleShowPassword = () => {
+        setShowPassword((prevShowPassword) => !prevShowPassword);
+    }
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    }
 
     const onSuccessGoogle = async (res) => {
         dispatch(ActionCreators.login(res.isSignedIn(), res.Zb.access_token, res.profileObj.email));
@@ -57,48 +79,85 @@ const Login = ({ history }) => {
                 </Link>
             </div>
 
-            <div className="login-right-box">
-                <div className="login-text">로그인</div>
-                <div className="login-intro">
-                    <div>포트레이트의 회원이 되시면, 포트폴리오 등록 및 기업 공고 열람</div>
-                    <div>서비스를 간편하게 이용하실 수 있습니다.</div>
-                </div>
-
-                <GoogleLogin
-                    clientId="988674118538-gog8quj6fimubp2b8dc6jhecui5e88cd.apps.googleusercontent.com" //앱키 추후 변경
-                    onSuccess={(res) => onSuccessGoogle(res)}
-                    onFailure={(err) => onFailureGoogle(err)}
-                    cookiePolicy="none"
-                    className="google-login"
-                    buttonText="Google 계정으로 로그인"
-                />
-
-                <div className="login-or-text">
-                    <span>or</span>
-                </div>
-
-                <fieldset className="login-fieldset">
-                    <legend>이메일 또는 아이디 입력</legend>
-                    <input className="login-input" type="text" />
-                </fieldset>
-                <fieldset className="login-fieldset">
-                    <legend>비밀번호</legend>
-                    <input className="login-input" type="password" />
-                </fieldset>
-
-                <div className="btn-login">로그인</div>
-
-                <div className="login-option">
-                    <div>
-                        <input type="checkbox" id="login-info-save" />
-                        <label htmlFor="login-info-save" className="login-info-save">
-                            아이디 / 비밀번호 저장
-                        </label>
+            <div className="login-right">
+                <div className="login-right-box">
+                    <div className="login-text">로그인</div>
+                    <div className="login-intro">
+                        <div>포트레이트의 회원이 되시면, 포트폴리오 등록 및 기업 공고 열람</div>
+                        <div>서비스를 간편하게 이용하실 수 있습니다.</div>
                     </div>
 
-                    <p className="login-find-pw">비밀번호를 잊으셨나요?</p>
+                    <GoogleLogin
+                        clientId="988674118538-gog8quj6fimubp2b8dc6jhecui5e88cd.apps.googleusercontent.com" //앱키 추후 변경
+                        onSuccess={(res) => onSuccessGoogle(res)}
+                        onFailure={(err) => onFailureGoogle(err)}
+                        cookiePolicy="none"
+                        className="google-login"
+                        buttonText="Google 계정으로 로그인"
+                    />
+
+                    <div className="login-or-text">
+                        <span>or</span>
+                    </div>
+
+                    <form className="email-login" onSubmit={handleSubmit}>
+                        {/* <fieldset className="login-fieldset">
+                            <legend>이메일 또는 아이디 입력</legend>
+                            <input className="login-input" type="text" />
+                        </fieldset>
+                        <fieldset className="login-fieldset">
+                            <legend>비밀번호</legend>
+                            <input className="login-input" type="password" />
+                        </fieldset> */}
+                        <Grid container direction={"column"} spacing={2}>
+                            <Grid item>
+                                <TextField
+                                    name="userId"
+                                    type="text"
+                                    variant="outlined"
+                                    label="이메일 또는 아이디"
+                                    fullWidth
+                                    autoFocus
+                                    onChange={handleChange}
+                                />
+                            </Grid>
+                            <Grid item>
+                                <TextField
+                                    name="password"
+                                    type={showPassword ? "text" : "password"}
+                                    variant="outlined"
+                                    label="비밀번호"
+                                    fullWidth
+                                    onChange={handleChange}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <IconButton onClick={handleShowPassword}>
+                                                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        )
+                                    }}
+                                />
+                            </Grid>
+                        </Grid>
+
+                        <button className="btn-login" type="submit">로그인</button>
+
+                        <div className="login-option">
+                            <div>
+                                <input type="checkbox" id="login-info-save" />
+                                <label htmlFor="login-info-save" className="login-info-save">
+                                    아이디 / 비밀번호 저장
+                                </label>
+                            </div>
+                            <p className="login-find-pw">비밀번호를 잊으셨나요?</p>
+                        </div>
+                    </form>
+
                 </div>
             </div>
+
         </div>
     );
 };
