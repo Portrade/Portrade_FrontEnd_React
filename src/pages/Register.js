@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import "./css/register.css";
+import ActionCreators from "../_actions";
+
+const initialState = { userId: "", password: "", confirmPassword: "" };
 
 const Register = () => {
+    const dispatch = useDispatch();
+    const [formData, setFormData] = useState(initialState);
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    // const handleSubmit = () => {
+    //     console.log(formData);
+    //     dispatch(ActionCreators.signup({
+    //         "userId": "test1",
+    //         "name": "김가입",
+    //         "password": "1234Aa@@",
+    //         "college": "가나대학교",
+    //         "graduation": "true",
+    //         "wantedJob":"PROGRAMMING",
+    //         "birthDate": "19700312"
+    //     }));
+    // };
+
     return (
         <div className="register-box">
             <div className="register-left-box">
@@ -16,11 +41,11 @@ const Register = () => {
 
                 <fieldset className="register-fieldset">
                     <legend>이메일 또는 아이디 입력</legend>
-                    <input className="register-input" type="text" />
+                    <input className="register-input" name="userId" type="text" onChange={handleChange} />
                 </fieldset>
                 <fieldset className="register-fieldset">
                     <legend>비밀번호</legend>
-                    <input className="register-input" type="password" />
+                    <input className="register-input" name="password" type="password" onChange={handleChange} />
                 </fieldset>
                 <div className="password-option">
                     <div>
@@ -32,11 +57,12 @@ const Register = () => {
                 </div>
                 <fieldset className="register-fieldset">
                     <legend>비밀번호</legend>
-                    <input className="register-input" type="password" />
+                    <input className="register-input" name="confirmPassword" type="password" onChange={handleChange} />
                 </fieldset>
 
                 <div className="btn-register">
                     <Link to="/member">추가 정보 입력하기</Link>
+                    {/* <button onClick={handleSubmit}>추가 정보 입력하기</button> */}
                 </div>
             </div>
 

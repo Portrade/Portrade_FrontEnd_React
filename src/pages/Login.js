@@ -26,8 +26,8 @@ const Login = ({ history }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // dispatch(ActionCreators.login());
-        ActionCreators.login(formData);
+        // console.log(formData);
+        dispatch(ActionCreators.login(formData));
     };
 
     const handleShowPassword = () => {
@@ -53,38 +53,39 @@ const Login = ({ history }) => {
     };
 
     return (
-        <div className="login-box">
-            <div className="login-left-box">
-                <Link to="/" className="login-logo-text">
-                    PORTRADE
-                </Link>
-                <div className="login-intro-text">
-                    <p>PORTRADE와 함께</p>
-                    <p>취업을 향한 여정을 시작해보세요.</p>
-                </div>
+        <div className="login">
+            <div className="login-left-img">
+                <div className="login-left-img-in"></div>
+            </div>
+            <div className="login-left">
+                <div className="login-left-box">
+                    <Link to="/" className="login-logo-text">PORTRADE</Link>
+                    <div className="login-intro-text">
+                        PORTRADE와 함께<br/>취업을 향한 여정을 시작해보세요.
+                    </div>
+                    <div className="login-slogan-text">
+                        다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.<br/>
+                        취업난 속에서 기업과 청년의 연결을 도모합니다.<br/>
+                        다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.<br/>
+                         취업난 속에서 기업과 청년의 연결을 도모합니다.<br/>
+                    </div>
 
-                <div className="login-slogan-text">
-                    <p>다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.</p>
-                    <p>취업난 속에서 기업과 청년의 연결을 도모합니다.</p>
-                    <p>다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.</p>
-                    <p>취업난 속에서 기업과 청년의 연결을 도모합니다.</p>
-                </div>
+                    <div className="login-more-info">
+                        <Link to="/introduce">플랫폼 더 알아보기 &gt;</Link>
+                    </div>
 
-                <div className="login-more-info-text">
-                    <Link to="/introduce">플랫폼 더 알아보기 &gt;</Link>
+                    <Link to="/register" className="login-btn-register">
+                        회원가입
+                    </Link>
                 </div>
-
-                <Link to="/register" className="login-btn-register">
-                    회원가입
-                </Link>
             </div>
 
             <div className="login-right">
                 <div className="login-right-box">
                     <div className="login-text">로그인</div>
                     <div className="login-intro">
-                        <div>포트레이트의 회원이 되시면, 포트폴리오 등록 및 기업 공고 열람</div>
-                        <div>서비스를 간편하게 이용하실 수 있습니다.</div>
+                        포트레이트의 회원이 되시면, 포트폴리오 등록 및 기업 공고 열람<br/>
+                        서비스를 간편하게 이용하실 수 있습니다.
                     </div>
 
                     <GoogleLogin
