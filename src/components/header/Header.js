@@ -11,22 +11,24 @@ const Header = () => {
     const dispatch = useDispatch();
     const isLogin = useSelector((state) => state.login.isLogin);
     const sessionStoragetokenCheck =
-        window.sessionStorage.getItem("access_token");
+        localStorage.getItem("webToken"); // window.sessionStorage.getItem("access_token");
 
-    useEffect(() => {
+    /*useEffect(() => {
         if (sessionStoragetokenCheck) {
-            dispatch(ActionCreators.login());
+            console.log(isLogin);
+            console.log(sessionStoragetokenCheck);
+            // dispatch(ActionCreators.login());
         } else {
             dispatch(ActionCreators.logout());
         }
-    }, [sessionStoragetokenCheck, dispatch]);
+    }, [sessionStoragetokenCheck, dispatch]);*/
 
     const onLogoutSuccess = () => {
-        if (window.confirm("로그아웃 하시겠습니까?")) {
-            window.sessionStorage.clear();
-            dispatch(ActionCreators.logout());
+        // if (window.confirm("로그아웃 하시겠습니까?")) {
+            //window.sessionStorage.clear();
+            dispatch(ActionCreators.logout()); //history));
             window.location.href = "/";
-        }
+        // }
     };
 
     return (

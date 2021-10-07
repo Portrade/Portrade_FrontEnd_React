@@ -16,9 +16,11 @@ const loginReducer = (state = { authData: null, isLogin: false }, action) => {
                 authData: action?.data,
                 isLogin: action.isLogin
             }
-        
         case types.LOGOUT_USER:
             console.log("-----LOGOUT-----");
+
+            localStorage.clear();
+
             return state = {
                 ...state,
                 isLogin: action.isLogin

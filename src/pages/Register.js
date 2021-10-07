@@ -15,19 +15,6 @@ const Register = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    // const handleSubmit = () => {
-    //     console.log(formData);
-    //     dispatch(ActionCreators.signup({
-    //         "userId": "test1",
-    //         "name": "김가입",
-    //         "password": "1234Aa@@",
-    //         "college": "가나대학교",
-    //         "graduation": "true",
-    //         "wantedJob":"PROGRAMMING",
-    //         "birthDate": "19700312"
-    //     }));
-    // };
-
     return (
         <div className="register-box">
             <div className="register-left-box">
@@ -61,7 +48,15 @@ const Register = () => {
                 </fieldset>
 
                 <div className="btn-register">
-                    <Link to="/member">추가 정보 입력하기</Link>
+                <Link
+                    to={{
+                        pathname: "/member",
+                        state: {
+                            // hello: "Hello World"
+                            formData
+                        }
+                    }}>
+                    추가 정보 입력하기</Link>
                     {/* <button onClick={handleSubmit}>추가 정보 입력하기</button> */}
                 </div>
             </div>
