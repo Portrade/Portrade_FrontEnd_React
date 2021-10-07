@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import reducers from "./_reducers";
 import ScrollToTop from "./pages/behavior/ScrollToTop";
-
+       
 ReactDOM.render(
     <Provider store={createStore(reducers)}>
         <Router>
