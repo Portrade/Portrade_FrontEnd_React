@@ -265,13 +265,9 @@ const Member = () => {
                 </div>
 
                 <div className="member-slogan-text">
-                    <p>
-                        다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.
-                    </p>
+                    <p>다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.</p>
                     <p>취업난 속에서 기업과 청년의 연결을 도모합니다.</p>
-                    <p>
-                        다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.
-                    </p>
+                    <p>다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.</p>
                     <p>취업난 속에서 기업과 청년의 연결을 도모합니다.</p>
                 </div>
 
@@ -283,10 +279,7 @@ const Member = () => {
             <div className="member-right-box">
                 <div className="member-text">PORTRADE로 시작하기</div>
                 <div className="member-intro">
-                    <div>
-                        포트레이트의 회원이 되시면, 포트폴리오 등록 및 기업 공고
-                        열람
-                    </div>
+                    <div>포트레이트의 회원이 되시면, 포트폴리오 등록 및 기업 공고 열람</div>
                     <div>서비스를 간편하게 이용하실 수 있습니다.</div>
                 </div>
 
@@ -301,23 +294,19 @@ const Member = () => {
                     </select>
                 </fieldset>
                 <div className="member-graduation-checkbox">
-                    <input
-                        type="checkbox"
-                        checked={Checked1}
-                        onChange={() => checkHandler(1)}
-                    />
+                    <input type="checkbox" checked={Checked1} onChange={() => checkHandler(1)} />
                     <legend>재학</legend>
-                    <input
-                        type="checkbox"
-                        checked={Checked2}
-                        onChange={() => checkHandler(2)}
-                    />
+                    <input type="checkbox" checked={Checked2} onChange={() => checkHandler(2)} />
                     <legend>졸업</legend>
                 </div>
 
                 <fieldset className="member-fieldset">
                     <legend>생년월일</legend>
                     <input className="member-input" type="date" />
+                </fieldset>
+                <fieldset className="member-fieldset">
+                    <legend>이름</legend>
+                    <input className="member-input" type="text" />
                 </fieldset>
                 <fieldset className="member-fieldset">
                     <select className="member-input">
@@ -332,17 +321,11 @@ const Member = () => {
                     <div>
                         <div>
                             <input type="checkbox" id="member-info-agree" />
-                            <label
-                                htmlFor="member-info-agree"
-                                className="member-info-agree"
-                            >
+                            <label htmlFor="member-info-agree" className="member-info-agree">
                                 포트레이트 가입 약관에 모두 동의 합니다.
                             </label>
                         </div>
-                        <div className="member-agree-content">
-                            스터닝 이용약관(필수), 개인정보취급방침(필수),
-                            마케팅정보 수집동의(선택)
-                        </div>
+                        <div className="member-agree-content">스터닝 이용약관(필수), 개인정보취급방침(필수), 마케팅정보 수집동의(선택)</div>
                     </div>
                 </div>
                 <div className="member-btn-start">포트레이드 시작하기</div>

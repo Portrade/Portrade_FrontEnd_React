@@ -6,7 +6,7 @@ const api = axios.create({
 
 export const noticeApi = {
     getList: () => api.get("/api/v1/notices?"),
-    postList: (title, content) => api.post("/api/v1/notices", { title: title, content: content }),
+    postList: (title, contents) => api.post("/api/v1/notices", { title: title, content: contents }),
     getNoticeDetail: (noticeId) => api.get(`/api/v1/notices/${noticeId}`),
     putNotice: (noticeId) => api.put(`/api/v1/notices/${noticeId}`),
     deleteNotice: (noticeId) => api.delete(`/api/v1/notices/${noticeId}`),
