@@ -102,7 +102,7 @@
 .member-input {
     border: none;
     outline: none;
-    height: 40px;
+    height: 35px;
     width: 100%;
     font: normal normal normal 13px/38px AppleSDGothicNeoR00;
     padding-left: 24px;
@@ -134,10 +134,6 @@
     font: normal normal normal 15px/38px AppleSDGothicNeoSB00;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
-}
-
 .member-agree-option {
     display: flex;
     flex-direction: column;
@@ -156,4 +152,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     line-height: 15px;
     margin-left: 12px;
     cursor: pointer;
+}
+
+.member-input::-webkit-calendar-picker-indicator {
+    width: 10%;
 }

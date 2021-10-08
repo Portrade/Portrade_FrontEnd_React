@@ -1,0 +1,4 @@
+#root > div > div.register-left > div > form > div > div:nth-child(2) > div > div > p {
+	font: .7em/20px AppleSDGothicNeoSB00;
+	color: #000000;
+}

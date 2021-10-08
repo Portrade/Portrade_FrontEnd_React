@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import "./css/member.css";
+import ActionCreators from "../_actions";
+
 
 const initialState = {
     userId: "",
@@ -14,38 +17,35 @@ const initialState = {
 };
 
 const Member = (props) => {
-
+    const dispatch = useDispatch();
     const [formData, setFormData] = useState(initialState);
 
     useEffect(() => {
         setFormData({
             ...formData,
             userId: props.location.state.formData.userId,
-            password: props.location.state.formData.password,
+            password: props.location.state.formData.passwordReg,
         });
     }, [props]);
 
     const handleChange = (e) => {
+        if (e.target.name == "birthDate") {
+            setFormData({
+                ...formData,
+                birthDate: (e.target.value.split("-").join("")) //.reverse());
+            })
+            return;
+        }
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
     }
     
-    console.log(formData);
-
-    // const handleSubmit = () => {
-    //     console.log(formData);
-    //     dispatch(ActionCreators.signup({
-    //         "userId": "test1",
-    //         "name": "김가입",
-    //         "password": "1234Aa@@",
-    //         "college": "가나대학교",
-    //         "graduation": "true",
-    //         "wantedJob":"PROGRAMMING",
-    //         "birthDate": "19700312"
-    //     }));
-    // };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(ActionCreators.signup(formData, props.history)); //{ formData }));
+    };
 
     const universityList = [
         "가천대학교",
@@ -318,13 +318,9 @@ const Member = (props) => {
                 </div>
 
                 <div className="member-slogan-text">
-                    <p>
-                        다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.
-                    </p>
+                    <p>다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.</p>
                     <p>취업난 속에서 기업과 청년의 연결을 도모합니다.</p>
-                    <p>
-                        다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.
-                    </p>
+                    <p>다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.</p>
                     <p>취업난 속에서 기업과 청년의 연결을 도모합니다.</p>
                 </div>
 
@@ -336,10 +332,7 @@ const Member = (props) => {
             <div className="member-right-box">
                 <div className="member-text">PORTRADE로 시작하기</div>
                 <div className="member-intro">
-                    <div>
-                        포트레이트의 회원이 되시면, 포트폴리오 등록 및 기업 공고
-                        열람
-                    </div>
+                    <div>포트레이트의 회원이 되시면, 포트폴리오 등록 및 기업 공고 열람</div>
                     <div>서비스를 간편하게 이용하실 수 있습니다.</div>
                 </div>
 
@@ -354,26 +347,22 @@ const Member = (props) => {
                     </select>
                 </fieldset>
                 <div className="member-graduation-checkbox">
-                    <input
-                        type="checkbox"
-                        checked={Checked1}
-                        onChange={(e) => checkHandler(1)}
-                    />
+                    <input type="checkbox" checked={Checked1} onChange={() => checkHandler(1)} />
                     <legend>재학</legend>
-                    <input
-                        type="checkbox"
-                        checked={Checked2}
-                        onChange={() => checkHandler(2)}
-                    />
+                    <input type="checkbox" checked={Checked2} onChange={() => checkHandler(2)} />
                     <legend>졸업</legend>
                 </div>
 
                 <fieldset className="member-fieldset">
                     <legend>생년월일</legend>
-                    <input className="member-input" type="date" />
+                    <input className="member-input" type="date" name="birthDate" onChange={handleChange} />
                 </fieldset>
                 <fieldset className="member-fieldset">
-                    <select className="member-input" name="wantedJob" onChange={handleChange}>
+                    <legend>이름</legend>
+                    <input className="member-input" type="text" name="name" onChange={handleChange} />
+                </fieldset>
+                <fieldset className="member-fieldset">
+                    <select className="member-input" name="wantedJob" onChange={handleChange} >
                         {jobCategory.map((item, index) => (
                             <option value={item} key={index}>
                                 {item}
@@ -385,21 +374,14 @@ const Member = (props) => {
                     <div>
                         <div>
                             <input type="checkbox" id="member-info-agree" />
-                            <label
-                                htmlFor="member-info-agree"
-                                className="member-info-agree"
-                            >
+                            <label htmlFor="member-info-agree" className="member-info-agree">
                                 포트레이트 가입 약관에 모두 동의 합니다.
                             </label>
                         </div>
-                        <div className="member-agree-content">
-                            스터닝 이용약관(필수), 개인정보취급방침(필수),
-                            마케팅정보 수집동의(선택)
-                        </div>
+                        <div className="member-agree-content">스터닝 이용약관(필수), 개인정보취급방침(필수), 마케팅정보 수집동의(선택)</div>
                     </div>
                 </div>
-                {/* <div className="member-btn-start" onClick={()=>{}}>포트레이드 시작하기</div> */}
-                <a className="member-btn-start" onClick={()=>{}}>포트레이드 시작하기</a>
+                <a className="member-btn-start" onClick={handleSubmit}>포트레이드 시작하기</a>
             </div>
         </div>
     );

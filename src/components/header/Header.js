@@ -12,12 +12,10 @@ const Header = () => {
     const isLogin = useSelector((state) => state.login.isLogin);
     const sessionStoragetokenCheck =
         localStorage.getItem("webToken"); // window.sessionStorage.getItem("access_token");
-
+    
     /*useEffect(() => {
         if (sessionStoragetokenCheck) {
-            console.log(isLogin);
-            console.log(sessionStoragetokenCheck);
-            // dispatch(ActionCreators.login());
+            dispatch(ActionCreators.login());
         } else {
             dispatch(ActionCreators.logout());
         }
@@ -26,8 +24,8 @@ const Header = () => {
     const onLogoutSuccess = () => {
         // if (window.confirm("로그아웃 하시겠습니까?")) {
             //window.sessionStorage.clear();
-            dispatch(ActionCreators.logout()); //history));
-            window.location.href = "/";
+        dispatch(ActionCreators.logout());
+        window.location.href = "/";
         // }
     };
 
@@ -50,7 +48,7 @@ const Header = () => {
             </div>
 
             <div className="nav-bar">
-                {isLogin ? (
+                {sessionStoragetokenCheck ? ( //isLogin ?
                     <GoogleLogout
                         buttonText="로그아웃"
                         onLogoutSuccess={() => onLogoutSuccess()}
@@ -60,7 +58,7 @@ const Header = () => {
                 ) : (
                     <Link to="/login">로그인</Link>
                 )}
-                {isLogin ? (
+                {sessionStoragetokenCheck ? (
                     <Link to="/mypage">마이페이지</Link>
                 ) : (
                     <Link to="/register">회원가입</Link>

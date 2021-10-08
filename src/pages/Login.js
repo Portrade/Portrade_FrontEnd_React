@@ -2,20 +2,18 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 import { useDispatch } from "react-redux";
+import { Grid } from "@material-ui/core";
 
 import "./css/login.css";
-import { InputAdornment, Grid, IconButton, TextField } from "@material-ui/core";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 import ActionCreators from "../_actions";
+import Input from "../components/auth/Input";
 
 
 const initialState = { userId: "", password: "" };
 
 const Login = ({ history }) => {
     const dispatch = useDispatch();
-    const [showPassword, setShowPassword] = useState(false);
     const [formData, setFormData] = useState(initialState);
 
     const config = {
@@ -26,13 +24,8 @@ const Login = ({ history }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(formData);
         dispatch(ActionCreators.login(formData, history));
     };
-
-    const handleShowPassword = () => {
-        setShowPassword((prevShowPassword) => !prevShowPassword);
-    }
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -68,7 +61,7 @@ const Login = ({ history }) => {
                         PORTRADE와 함께<br />
                         취업을 향한 여정을 시작해보세요.
                     </div>
-                    <div className="login-intro">
+                    <div className="login-slogan-text">
                         다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.<br/>
                         취업난 속에서 기업과 청년의 연결을 도모합니다.<br/>
                         다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.<br/>
@@ -109,27 +102,11 @@ const Login = ({ history }) => {
 
                     <form className="email-login" onSubmit={handleSubmit}>
                         <Grid container direction={"column"} spacing={2}>
-                            <Grid item>
-                                <TextField
-                                    name="userId" label="이메일 또는 아이디" type="text" 
-                                    variant="outlined" fullWidth autoFocus
-                                    onChange={handleChange}
-                                />
+                            <Grid item >
+                                <Input name="userId" label="이메일 또는 아이디" type="text" autoFocus handleChange={handleChange} />
                             </Grid>
                             <Grid item>
-                                <TextField
-                                    name="password" label="비밀번호" type={showPassword ? "text" : "password"}
-                                    variant="outlined" fullWidth onChange={handleChange}
-                                    InputProps={{
-                                        endAdornment: (
-                                            <InputAdornment position="end">
-                                                <IconButton onClick={handleShowPassword}>
-                                                    {showPassword ? <Visibility /> : <VisibilityOff />}
-                                                </IconButton>
-                                            </InputAdornment>
-                                        )
-                                    }}
-                                />
+                                <Input name="password" label="비밀번호" type="password" handleChange={handleChange} />
                             </Grid>
                         </Grid>
 

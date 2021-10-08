@@ -23,6 +23,7 @@ const loginReducer = (state = { authData: null, isLogin: false }, action) => {
 
             return state = {
                 ...state,
+                authData: null,
                 isLogin: action.isLogin
             }
         default:
