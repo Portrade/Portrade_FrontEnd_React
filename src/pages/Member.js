@@ -1,9 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import "./css/member.css";
+import ActionCreators from "../_actions";
 
-const Member = () => {
+
+const initialState = {
+    userId: "",
+    name: "",
+    password: "",
+    college: "",
+    graduation: "",
+    wantedJob:"",
+    birthDate: ""
+};
+
+const Member = (props) => {
+    const dispatch = useDispatch();
+    const [formData, setFormData] = useState(initialState);
+
+    useEffect(() => {
+        setFormData({
+            ...formData,
+            userId: props.location.state.formData.userId,
+            password: props.location.state.formData.passwordReg,
+        });
+    }, [props]);
+
+    const handleChange = (e) => {
+        if (e.target.name == "birthDate") {
+            setFormData({
+                ...formData,
+                birthDate: (e.target.value.split("-").join("")) //.reverse());
+            })
+            return;
+        }
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    }
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(ActionCreators.signup(formData, props.history)); //{ formData }));
+    };
+
     const universityList = [
         "가천대학교",
         "가톨릭관동대학교",
@@ -247,9 +290,19 @@ const Member = () => {
         if (id === 1) {
             setChecked2(false);
             setChecked1(true);
+
+            setFormData({
+                ...formData,
+                graduation: "false"
+            });
         } else if (id === 2) {
             setChecked1(false);
             setChecked2(true);
+
+            setFormData({
+                ...formData,
+                graduation: "true"
+            });
         }
     };
 
@@ -285,7 +338,7 @@ const Member = () => {
 
                 <fieldset className="member-fieldset school-fieldset">
                     <legend>학교찾기</legend>
-                    <select className="member-input">
+                    <select className="member-input" name="college" onChange={handleChange}>
                         {universityList.map((item, index) => (
                             <option value={item} key={index}>
                                 {item}
@@ -302,14 +355,14 @@ const Member = () => {
 
                 <fieldset className="member-fieldset">
                     <legend>생년월일</legend>
-                    <input className="member-input" type="date" />
+                    <input className="member-input" type="date" name="birthDate" onChange={handleChange} />
                 </fieldset>
                 <fieldset className="member-fieldset">
                     <legend>이름</legend>
-                    <input className="member-input" type="text" />
+                    <input className="member-input" type="text" name="name" onChange={handleChange} />
                 </fieldset>
                 <fieldset className="member-fieldset">
-                    <select className="member-input">
+                    <select className="member-input" name="wantedJob" onChange={handleChange} >
                         {jobCategory.map((item, index) => (
                             <option value={item} key={index}>
                                 {item}
@@ -328,7 +381,7 @@ const Member = () => {
                         <div className="member-agree-content">스터닝 이용약관(필수), 개인정보취급방침(필수), 마케팅정보 수집동의(선택)</div>
                     </div>
                 </div>
-                <div className="member-btn-start">포트레이드 시작하기</div>
+                <a className="member-btn-start" onClick={handleSubmit}>포트레이드 시작하기</a>
             </div>
         </div>
     );
