@@ -21,6 +21,6 @@ export const noticeApi = {
         }),
     postList: (title, contents) => api.post("/api/v1/notices", { title: title, content: contents }),
     getNoticeDetail: (noticeId) => api.get(`/api/v1/notices/${noticeId}`),
-    putNotice: (noticeId) => api.put(`/api/v1/notices/${noticeId}`),
+    editNotice: (noticeId, title, content) => api.put(`/api/v1/notices/${noticeId}`, { title: title, content: content }),
     deleteNotice: (noticeId) => api.delete(`/api/v1/notices/${noticeId}`),
 };

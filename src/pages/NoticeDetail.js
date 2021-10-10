@@ -1,29 +1,45 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { noticeApi } from "../_api";
 import "./css/noticeDetail.css";
 
-const Notice = () => {
+const Notice = ({ history }) => {
     const [data, setData] = useState();
     const [next, setNext] = useState();
     const [prev, setPrev] = useState();
+
+    const getId = () => {
+        const urlArr = window.location.href.split("/");
+        const id = window.location.href.split("/")[urlArr.length - 1];
+        return id;
+    };
 
     useEffect(() => {
         async function fetchData() {
             setNext(null);
             setPrev(null);
-            const urlArr = window.location.href.split("/");
-            const id = window.location.href.split("/")[urlArr.length - 1];
+            let id = getId();
             let { data } = await noticeApi.getNoticeDetail(id);
-            console.log(data);
             if (data.prev) setPrev(data.prev);
             if (data.next) setNext(data.next);
-            console.log(next);
-
             setData(data);
         }
         fetchData();
     }, [window.location.href]);
+    const deleteHandler = async () => {
+        let check = window.confirm("정말 삭제하시겠습니까?");
+        let response;
+        if (check === true) {
+            try {
+                response = await noticeApi.deleteNotice(getId());
+                if (response.status !== 204) throw new Error("204 status를 반환하지 않음");
+            } catch {
+                alert("정상적으로 처리되지 않았습니다.");
+            } finally {
+                history.push("/notice");
+            }
+        }
+    };
 
     return (
         <div className="noticeDetail-wrap">
@@ -68,9 +84,24 @@ const Notice = () => {
                         </div>
                     )}
                     <div className="noticeDetail-category-line"></div>
+                    <div to={"/notice/post"}>
+                        <div className="noticeDetail-button-Area">
+                            <Link to={`/notice/${getId()}/edit`}>
+                                <button className="noticeDetail-register-btn">공지사항 수정</button>
+                            </Link>
+                            <button
+                                onClick={() => {
+                                    deleteHandler();
+                                }}
+                                className="noticeDetail-register-btn"
+                            >
+                                공지사항 삭제
+                            </button>
+                        </div>
+                    </div>
                 </div>
             ) : null}
         </div>
     );
 };
-export default Notice;
+export default withRouter(Notice);
