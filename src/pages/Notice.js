@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./css/notice.css";
+import { noticeApi } from "../_api";
 
-const BoardItem = ({ title, num, date, views }) => {
+const BoardItem = ({ title, index, createdDate, viewCount }) => {
     return (
         <>
             <div className="notice-tab-post">
-                <span>{num}</span>
+                <span>{index}</span>
                 <span>{title}</span>
-                <span>{date}</span>
-                <span>{views}</span>
+                <span>{createdDate}</span>
+                <span>{viewCount}</span>
             </div>
             <div className="notice-tab-post-line"></div>
         </>
@@ -17,13 +18,27 @@ const BoardItem = ({ title, num, date, views }) => {
 };
 
 const Notice = () => {
-    const boardData = [
-        { title: "예시용 데이터입니다.", date: "2021-01-01", views: "12" },
-        { title: "제목 검색", date: "2021-01-01", views: "12" },
-        { title: "공지사항2", date: "2021-01-01", views: "12" },
-    ];
+    const [noticeList, setNoticeList] = useState();
     const [inputVal, setinputVal] = useState();
     const [searchVal, setSearchVal] = useState("");
+    const [page, setPage] = useState();
+    const [selectedBtn, setBtn] = useState(1);
+    const [btnJSX, setBtnJSX] = useState();
+    const [maxPage, setMaxPage] = useState();
+
+    useEffect(() => {
+        async function fetchData() {
+            let {
+                data: { notices, maxPage },
+            } = await noticeApi.getList(selectedBtn);
+            setNoticeList(notices);
+            setPage(maxPage);
+            let jsx = pageBtnHandler();
+            setBtnJSX(jsx);
+            setMaxPage(maxPage);
+        }
+        fetchData();
+    }, [page, selectedBtn]);
 
     const inputHandler = ({ target: { value } }) => {
         setinputVal(value);
@@ -33,6 +48,31 @@ const Notice = () => {
         setSearchVal(inputVal);
         e.preventDefault();
         setinputVal("");
+    };
+
+    const pageBtnHandler = () => {
+        let btn = [];
+        for (let i = 1; i <= page; i++) {
+            btn.push(
+                <button
+                    onClick={() => {
+                        setBtn(i);
+                    }}
+                    className="notice-page-prevbtn"
+                >
+                    {i}
+                </button>
+            );
+        }
+        return btn;
+    };
+
+    const leftBtnHandler = () => {
+        if (selectedBtn !== 1) setBtn(selectedBtn - 1);
+    };
+    const rightBtnHandler = () => {
+        if (selectedBtn !== maxPage) setBtn(selectedBtn + 1);
+        console.log(selectedBtn);
     };
 
     return (
@@ -54,17 +94,35 @@ const Notice = () => {
                     <span>조회수</span>
                 </div>
                 <div className="notice-category-line"></div>
-                {boardData
-                    .filter((item) => item.title.includes(searchVal))
-                    .map((item, index) => (
-                        <Link to={`notice/${index}`}>
-                            <BoardItem title={item.title} date={item.date} num={index} views={item.views} />
-                        </Link>
-                    ))}
+                {noticeList === undefined ? (
+                    <div className="notice-loadingDiv"></div>
+                ) : (
+                    noticeList
+                        .filter((item) => item.title.includes(searchVal))
+                        .map((item, index) => (
+                            <Link to={`notice/${item.id}`}>
+                                <BoardItem index={index + 1} title={item.title} createdDate={item.createdDate.substr(0, 10)} viewCount={item.viewCount} />
+                            </Link>
+                        ))
+                )}
                 <div className="notice-page-btn">
-                    <button className="notice-page-prevbtn">&lt;</button>
-                    <button className="notice-page-prevbtn">1</button>
-                    <button className="notice-page-prevbtn">&gt;</button>
+                    <button
+                        onClick={() => {
+                            leftBtnHandler();
+                        }}
+                        className="notice-page-prevbtn"
+                    >
+                        &lt;
+                    </button>
+                    {noticeList === undefined ? null : btnJSX}
+                    <button
+                        onClick={() => {
+                            rightBtnHandler();
+                        }}
+                        className="notice-page-prevbtn"
+                    >
+                        &gt;
+                    </button>
                     <Link to={"/notice/post"}>
                         <button className="notice-register-btn">공지사항 등록</button>
                     </Link>

@@ -34,8 +34,10 @@ const Notice = ({ history }) => {
         "color",
         "background",
     ];
-    const [desc, setDesc] = useState("");
-    const [title, setTitle] = useState("");
+    const [desc, setDesc] = useState();
+    const [title, setTitle] = useState();
+    const [data, setData] = useState();
+
     const onChangeTitle = (e) => {
         const { target } = e;
         setTitle(target.value);
@@ -44,12 +46,14 @@ const Notice = ({ history }) => {
         setDesc(value);
     };
 
-    const submitHandler = async () => {
+    const editHandler = async () => {
         let response;
-        if (desc !== "" && title !== "") {
+        if (desc !== undefined && title !== undefined) {
             try {
-                response = await noticeApi.postList(title, desc);
-                if (response.status !== 201) throw new Error("201 status를 반환하지 않음");
+                console.log(getId());
+                response = await noticeApi.editNotice(getId(), title, desc);
+                console.log(response);
+                if (response.status !== 204) throw new Error("204 status를 반환하지 않음");
             } catch {
                 alert("정상적으로 처리되지 않았습니다.");
             } finally {
@@ -60,11 +64,28 @@ const Notice = ({ history }) => {
         }
     };
 
+    const getId = () => {
+        const urlArr = window.location.href.split("/");
+        const id = window.location.href.split("/")[urlArr.length - 2];
+        return id;
+    };
+
+    useEffect(() => {
+        async function fetchData() {
+            let id = getId();
+            let { data } = await noticeApi.getNoticeDetail(id);
+            setData(data);
+            setTitle(data.title);
+            setDesc(data.content);
+        }
+        fetchData();
+    }, []);
+
     return (
         <div className="noticePost-wrap">
             <div className="noticePost-board">
                 <div className="noticePost-route">홈 &nbsp;&gt;&nbsp; 고객센터 &nbsp; &gt;&nbsp; 공지사항 &nbsp; &gt;&nbsp; 공지사항 추가</div>
-                <p className="noticePost-text">공지사항 추가</p>
+                <p className="noticePost-text">공지사항 수정</p>
                 <div className="noticePost-line"></div>
                 <form className="noticePost-form">
                     <label className="noticePost-label" htmlFor="title">
@@ -75,7 +96,7 @@ const Notice = ({ history }) => {
                     <ReactQuill id="content" className="noticePost-editor" theme="snow" modules={modules} formats={formats} value={desc || ""} onChange={(content, delta, source, editor) => onEditorChange(editor.getHTML())} />
                 </form>
                 <div className="noticePost-btn-section">
-                    <button className="noticePost-btn" onClick={submitHandler}>
+                    <button className="noticePost-btn" onClick={editHandler}>
                         확인
                     </button>
                 </div>
