@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "./css/noticePost.css";
 import "react-quill/dist/quill.snow.css";
+import { noticeApi } from "../_api";
 
-const Notice = () => {
+const Notice = ({ history }) => {
     const modules = {
         toolbar: [
             //[{ 'font': [] }],
@@ -34,9 +35,29 @@ const Notice = () => {
         "background",
     ];
     const [desc, setDesc] = useState("");
+    const [title, setTitle] = useState("");
+    const onChangeTitle = (e) => {
+        const { target } = e;
+        setTitle(target.value);
+    };
     const onEditorChange = (value) => {
         setDesc(value);
-        console.log(value);
+    };
+
+    const submitHandler = async () => {
+        let response;
+        if (desc !== "" && title !== "") {
+            try {
+                response = await noticeApi.postList(title, desc);
+                if (response.status !== 201) throw new Error("201 status를 반환하지 않음");
+            } catch {
+                alert("정상적으로 처리되지 않았습니다.");
+            } finally {
+                history.push("/notice");
+            }
+        } else {
+            alert("제목과 내용 모두 입력해야 합니다.");
+        }
     };
 
     return (
@@ -49,15 +70,17 @@ const Notice = () => {
                     <label className="noticePost-label" htmlFor="title">
                         제목 입력
                     </label>
-                    <input className="noticePost-input" type="text" id="title"></input>
-                    <label className="noticePost-label">내용</label>
-                    <ReactQuill id="main" className="noticePost-editor" theme="snow" modules={modules} formats={formats} value={desc || ""} onChange={(content, delta, source, editor) => onEditorChange(editor.getHTML())} />
+                    <input className="noticePost-input" onChange={onChangeTitle} value={title} type="text" id="title"></input>
+                    <div className="noticePost-label">내용</div>
+                    <ReactQuill id="content" className="noticePost-editor" theme="snow" modules={modules} formats={formats} value={desc || ""} onChange={(content, delta, source, editor) => onEditorChange(editor.getHTML())} />
                 </form>
                 <div className="noticePost-btn-section">
-                    <button className="noticePost-register-btn">확인</button>
+                    <button className="noticePost-btn" onClick={submitHandler}>
+                        확인
+                    </button>
                 </div>
             </div>
         </div>
     );
 };
-export default Notice;
+export default withRouter(Notice);

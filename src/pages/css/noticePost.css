@@ -79,3 +79,22 @@
 .noticePost-label {
     font: normal normal normal 15px/38px AppleSDGothicNeoR00;
 }
+
+.noticePost-btn-section {
+    width: 100%;
+}
+.noticePost-btn {
+    font: normal normal normal 15px/38px AppleSDGothicNeoR00;
+
+    background-color: white;
+    border: 1px solid #c9c9c9;
+    border-radius: 10px;
+    width: 80px;
+    height: 50px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.noticePost-btn:hover {
+    background-color: #dfdfdf;
+}

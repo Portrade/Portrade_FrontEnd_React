@@ -32,6 +32,11 @@
     color: #000000;
     opacity: 1;
 }
+.noticeDetail-tab-category:hover {
+    box-shadow: #51bfc2 0px 7px 20px 0px;
+
+    /* background-color: #01c1c6; */
+}
 
 .noticeDetail-tab-category span:first-child {
     margin-left: 8%;
@@ -47,4 +52,12 @@
     margin-left: 8%;
     width: 84%;
     word-break: break-all;
+}
+
+.noticeDetail-route {
+    font: normal normal normal 15px/25px AppleSDGothicNeoR00;
+    /* letter-spacing: 0px; */
+    color: #636363;
+    margin-left: 30px;
+    margin-bottom: 30px;
 }
