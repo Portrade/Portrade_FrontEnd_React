@@ -32,11 +32,6 @@
     color: #000000;
     opacity: 1;
 }
-.noticeDetail-tab-category:hover {
-    box-shadow: #51bfc2 0px 7px 20px 0px;
-
-    /* background-color: #01c1c6; */
-}
 
 .noticeDetail-tab-category span:first-child {
     margin-left: 8%;

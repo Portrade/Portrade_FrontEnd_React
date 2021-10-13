@@ -17,7 +17,7 @@ export const signUp = (formData) => api.post("/api/v1/users", formData);
 export const noticeApi = {
     getList: (page) =>
         api.get("/api/v1/notices?", {
-            params: { page, size: 5 },
+            params: { page, size: 8 },
         }),
     postList: (title, contents) => api.post("/api/v1/notices", { title: title, content: contents }),
     getNoticeDetail: (noticeId) => api.get(`/api/v1/notices/${noticeId}`),
