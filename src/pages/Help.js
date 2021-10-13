@@ -5,14 +5,8 @@ import "./css/help.css";
 const Help = () => {
     return (
         <div className="help-container">
-            <p className="help-question-text">
-                포트레이드에 궁금하신 점이 있으신가요?
-            </p>
-            <input
-                className="help-question-box"
-                type="text"
-                placeholder="이 곳에 검색어를 입력하세요"
-            />
+            <p className="help-question-text">포트레이드에 궁금하신 점이 있으신가요?</p>
+            <input className="help-question-box" type="text" placeholder="이 곳에 검색어를 입력하세요" />
 
             <div className="help-desc-container">
                 <div className="help-desc">
@@ -62,7 +56,20 @@ const Help = () => {
                 </div>
             </div>
 
-            <div className="help-banner">배너</div>
+            <div className="help-banner">
+                <div className="help-banner-text">
+                    <p>궁금한 내용에 대한 답변을 찾을 수 없나요?</p>
+                    <p>
+                        <span>링커벨</span>에게 문의를 해주세요.
+                    </p>
+                </div>
+                <Link className="help-banner-button" to="/qnas/post">
+                    1:1 문의하기
+                </Link>
+                <Link className="help-banner-button" to="/qnas">
+                    문의 내역 조회
+                </Link>
+            </div>
 
             <div className="help-service-container">
                 <p>서비스 소개</p>
