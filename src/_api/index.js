@@ -24,3 +24,10 @@ export const noticeApi = {
     editNotice: (noticeId, title, content) => api.put(`/api/v1/notices/${noticeId}`, { title: title, content: content }),
     deleteNotice: (noticeId) => api.delete(`/api/v1/notices/${noticeId}`),
 };
+
+export const inquiryApi = {
+    getList: (page) =>
+        api.get("/api/v1/qnas?", {
+            params: { page, size: 8 },
+        }),
+};

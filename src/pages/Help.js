@@ -63,10 +63,10 @@ const Help = () => {
                         <span>링커벨</span>에게 문의를 해주세요.
                     </p>
                 </div>
-                <Link className="help-banner-button" to="/qnas/post">
+                <Link className="help-banner-button" to="/inquiry/post">
                     1:1 문의하기
                 </Link>
-                <Link className="help-banner-button" to="/qnas">
+                <Link className="help-banner-button" to="/inquiry">
                     문의 내역 조회
                 </Link>
             </div>
