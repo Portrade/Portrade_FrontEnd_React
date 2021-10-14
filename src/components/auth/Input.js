@@ -5,26 +5,17 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 import "./css/input.css";
 
-const Input = ({ name, label, type, required, autoFocus, handleChange, helperText=null }) => {
+const Input = ({ name, label, type, required, autoFocus, error, setChange, helperText=null }) => {
 	
 	const [showPassword, setShowPassword] = useState(false);
-	const [passwords, setPasswords] = useState({ passwordReg: "", confirmPasswordReg: "" });
 	
-	useEffect(() => {
-		
-	}, [showPassword]);
-
 	const handleShowPassword = () => {
-        setShowPassword((prevShowPassword) => !prevShowPassword);
+		setShowPassword((prevShowPassword) => !prevShowPassword);
 	}
-
-	// const handleChange = (e) => {
-	// 	setPasswords({ ...passwords, [e.target.name]: e.target.value });
-	// }
-
-	const passwordNotMatch = () =>
-		passwords.confirmPasswordReg !== passwords.passwordReg ? true : false
 	
+	// useEffect(() => {	
+	// }, [showPassword]);
+
 	return (
 		<Grid item>
 			<TextField
@@ -36,10 +27,10 @@ const Input = ({ name, label, type, required, autoFocus, handleChange, helperTex
 				required={required}
 				autoFocus={autoFocus}
 				helperText={
-					helperText 			? helperText 				   :
-					passwordNotMatch()  ? "비밀번호가 일치하지 않습니다" : null }
-				error={name === "confirmPasswordReg" && passwordNotMatch()}
-				onChange={handleChange}
+					helperText	  ? helperText 				   :
+					error		  ? "비밀번호가 일치하지 않습니다" : null }
+				error={error}
+				onChange={(e) => setChange(e.target.value)}
 				InputProps={ (name === "password" || name === "passwordReg") ? {
 					endAdornment: (
 						<InputAdornment position="end">

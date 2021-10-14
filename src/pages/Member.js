@@ -23,9 +23,10 @@ const Member = (props) => {
     useEffect(() => {
         setFormData({
             ...formData,
-            userId: props.location.state.formData.userId,
-            password: props.location.state.formData.passwordReg,
+            userId: props.props.location.state.userId,
+            password: props.props.location.state.passwordReg,
         });
+        console.log(props.props.location.state);
     }, [props]);
 
     const handleChange = (e) => {
@@ -44,7 +45,7 @@ const Member = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(ActionCreators.signup(formData, props.history)); //{ formData }));
+        dispatch(ActionCreators.signup(formData)); //{ formData }));
     };
 
     const universityList = [

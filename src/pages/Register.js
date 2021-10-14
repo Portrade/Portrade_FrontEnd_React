@@ -5,16 +5,14 @@ import { Grid } from "@material-ui/core";
 import "./css/register.css";
 import Input from "../components/auth/Input";
 
+const Register = (props) => {
+    const [userId, setUserId] = useState('');
+    const [passwordReg, setPasswordReg] = useState('');
+    const [confirmPasswordReg, setConfirmPasswordReg] = useState('');
+    const formComplete = userId && passwordReg && confirmPasswordReg;
 
-const initialState = { userId: "", passwordReg: "", confirmPasswordReg: "" };
-
-const Register = () => {
-    const [formData, setFormData] = useState(initialState);
-
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
+    console.log(props);
+    
     return (
         <div className="register">
 
@@ -31,15 +29,15 @@ const Register = () => {
                     <form>
                         <Grid container direction={"column"} spacing={2}>
                             <Grid item>
-                                <Input name="userId" label="이메일 또는 아이디" type="text" required autoFocus handleChange={handleChange} />
+                                <Input name="userId" label="이메일 또는 아이디" type="text" required autoFocus setChange={setUserId} />
                             </Grid>
                             <Grid item>
-                                <Input name="passwordReg" label="비밀번호" type="password" required handleChange={handleChange}
+                                <Input name="passwordReg" label="비밀번호" type="password" required setChange={setPasswordReg}
                                     helperText="* 영문 대소문자, 숫자, 특수문자를 3가지 이상으로 조합하여 6자 이상 입력해 주세요"
                                 />
                             </Grid>
                             <Grid item>
-                                <Input name="confirmPasswordReg" label="비밀번호 확인" type="password" required handleChange={handleChange} />
+                                <Input name="confirmPasswordReg" label="비밀번호 확인" type="password" required error={passwordReg!==confirmPasswordReg} setChange={setConfirmPasswordReg} />
                             </Grid>
                         </Grid>
 
@@ -64,12 +62,26 @@ const Register = () => {
                             <input className="register-input" name="confirmPassword" type="password" onChange={handleChange} />
                         </fieldset> */}
 
-                        <Link  className="btn-register" to={{
+                        {/* <Link className={formComplete ? "btn-register" : "btn-register-disabled"}
+                            to={formComplete ? {
                                 pathname: "/member",
-                                state: { formData }
-                            }}>
-                            추가 정보 입력하기
-                        </Link>
+                                state: {
+                                    userId: userId,
+                                    passwordReg: passwordReg,
+                                }
+                            } : null}>
+                                추가 정보 입력하기
+                        </Link> */}
+
+                        {formComplete && passwordReg===confirmPasswordReg ?
+                            <Link className="btn-register" to={{pathname: "/member", state: {userId: userId, passwordReg: passwordReg}}} >
+                                추가 정보 입력하기
+                            </Link> :
+                            <Link className="btn-register-disabled" to="/member" onClick={(e) => e.preventDefault()} >
+                                추가 정보 입력하기
+                            </Link>
+                        }
+                        
                     </form>
 
                 </div>

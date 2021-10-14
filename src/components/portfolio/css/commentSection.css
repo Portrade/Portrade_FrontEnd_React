@@ -1,0 +1,76 @@
+.portfolioModal-portfolioComment-content {
+	padding: 0 100px 60px 100px;
+	font: normal normal normal 1rem/1.2rem AppleSDGothicNeoR00;
+}
+.portfolioModal-writeComment {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding-bottom: 20px;
+	border-bottom: 0.5px solid #c2c2c2;
+	margin-bottom: 2em;
+}
+.portfolioModal-writeComment-profile {
+	width: 60px;
+	height: 60px;
+	background: #487498 0% 0% no-repeat padding-box;
+	border-radius: 50%;
+	margin-right: 40px;
+}
+.portfolioModal-comment-text-content,
+.portfolioModal-writeInput {
+	flex: 1;
+}
+.portfolioModal-InputField {
+	height: 91px;
+	width: 100%;
+	font: normal normal normal 1rem/1.2rem AppleSDGothicNeoR00;
+	padding: 1em;
+	box-sizing: border-box;
+}
+.portfolioModal-submitButton {
+	width: 80px;
+	height: 91px;
+	margin-left: 1em;
+	background: #487498 0% 0% no-repeat padding-box;
+	color: #ffffff;
+}
+
+
+/* .portfolioModal-commentList {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	margin-top: 20px;
+	border-bottom: 0.5px solid #c2c2c2;
+} */
+.portfolioModal-comment {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 20px;
+}
+.portfolioModal-comment-profile {
+	width: 60px;
+	height: 60px;
+	background: #487498 0% 0% no-repeat padding-box;
+	border-radius: 50%;
+	margin-right: 40px;
+	overflow: hidden;
+}
+.portfolioModal-comment-profile img {
+	width: 100%;
+	object-fit: cover;
+	object-position: center right;  
+}
+.portfolioModal-comment-text-name {
+	margin-bottom: .5rem;
+}
+.portfolioModal-comment-moreButton {
+	margin-top: 10px;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: #01c1c6;
+	font: normal normal normal 20px/25px AppleSDGothicNeoB00;
+}
