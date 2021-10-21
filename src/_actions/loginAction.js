@@ -9,23 +9,23 @@ export const logout = () => async (dispatch) => {
     }
 }
 
-export const login = (formData, history) => async (dispatch) => {
+export const login = (formData) => async (dispatch) => {
     try {
         const { data } = await axios.logIn(formData);
         
         dispatch({ type: types.LOGIN_USER, data, isLogin: true })
 
-        history.push("/");
+        window.history.back(); //push("/");
     } catch (error) {
         console.log(error);
     }
 }
 
-export const signup = (formData, history) => async (dispatch) => {
+export const signup = (formData) => async (dispatch) => {
     try {       
         const { data } = await axios.signUp(formData);
         
-        history.push("/login");
+        window.history.push("/login");
     } catch (error) {
         console.log(error);
     }

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./css/portfolioModal.css";
+import CommentSection from "./CommentSection";
 
 const PortfolioModal = (props) => {
     // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
@@ -9,9 +10,11 @@ const PortfolioModal = (props) => {
         <div className={openModal ? "openModal modal" : "modal"}>
             {openModal ? (
                 <div className="portfolioModal-wrapper">
+
                     <button className="portfolioModal-closeButton" onClick={handleModal}>
                         &times;
                     </button>
+                    
                     <div className="portfolioModal-header">
                         <div className="portfolioModal-header-leftContent">
                             <div className="portfolioModal-header-title">포트폴리오 제목</div>
@@ -23,6 +26,7 @@ const PortfolioModal = (props) => {
                             <div className="">댓글</div>
                         </div>
                     </div>
+
                     <div className="portfolioModal-content">
                         <div className="portfolioModal-imgContainer"></div>
                         <div className="portfolioModal-button-group">
@@ -50,14 +54,10 @@ const PortfolioModal = (props) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="portfolioModal-portfolioComment-content">
-                            <div className="portfolioModal-writeComment">
-                                <div className="portfolioModal-writeComment-profile"></div>
-                                <div className="portfolioModal-writeInput">
-                                    <textarea className="portfolioModal-InputField" type="text" />
-                                </div>
-                                <div className="portfolioModal-submitButton"></div>
-                            </div>
+
+                        <CommentSection />
+
+                        {/* <div className="portfolioModal-portfolioComment-content">                            
                             <div className="portfolioModal-commentList">
                                 <div className="portfolioModal-comment">
                                     <div className="portfolioModal-comment-profile"></div>
@@ -90,7 +90,8 @@ const PortfolioModal = (props) => {
                             <div className="portfolioModal-comment-moreButton">
                                 <div>댓글 더 보기 ↓</div>
                             </div>
-                        </div>
+                        </div> */}
+
                     </div>
                 </div>
             ) : null}

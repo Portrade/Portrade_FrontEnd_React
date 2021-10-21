@@ -10,11 +10,10 @@ import ActionCreators from "../_actions";
 import Input from "../components/auth/Input";
 
 
-const initialState = { userId: "", password: "" };
-
-const Login = ({ history }) => {
+const Login = () => {
     const dispatch = useDispatch();
-    const [formData, setFormData] = useState(initialState);
+    const [userId, setUserId] = useState('');
+    const [password, setPassword] = useState('');
 
     const config = {
         headers: {
@@ -24,12 +23,8 @@ const Login = ({ history }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(ActionCreators.login(formData, history));
+        dispatch(ActionCreators.login({ userId, password }));
     };
-
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    }
 
     const onSuccessGoogle = async (res) => {
         dispatch(ActionCreators.login(res.isSignedIn(), res.Zb.access_token, res.profileObj.email));
@@ -103,10 +98,10 @@ const Login = ({ history }) => {
                     <form className="email-login" onSubmit={handleSubmit}>
                         <Grid container direction={"column"} spacing={2}>
                             <Grid item >
-                                <Input name="userId" label="이메일 또는 아이디" type="text" autoFocus handleChange={handleChange} />
+                                <Input name="userId" label="이메일 또는 아이디" type="text" autoFocus setChange={setUserId} />
                             </Grid>
                             <Grid item>
-                                <Input name="password" label="비밀번호" type="password" handleChange={handleChange} />
+                                <Input name="password" label="비밀번호" type="password" setChange={setPassword} />
                             </Grid>
                         </Grid>
 
