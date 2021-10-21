@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { noticeApi } from "../_api";
-import "./css/noticeDetail.css";
+import { inquiryApi } from "../_api";
+import "./css/inquiryDetail.css";
 
-const Notice = ({ history }) => {
+const Inquiry = ({ history }) => {
     const [data, setData] = useState();
     const [next, setNext] = useState();
     const [prev, setPrev] = useState();
@@ -19,7 +19,8 @@ const Notice = ({ history }) => {
             setNext(null);
             setPrev(null);
             let id = getId();
-            let { data } = await noticeApi.getNoticeDetail(id);
+            let { data } = await inquiryApi.inquiryDetail(id);
+            console.log(data);
             if (data.prev) setPrev(data.prev);
             if (data.next) setNext(data.next);
             setData(data);
@@ -31,70 +32,67 @@ const Notice = ({ history }) => {
         let response;
         if (check === true) {
             try {
-                response = await noticeApi.deleteNotice(getId());
+                response = await inquiryApi.deleteInquiry(getId());
                 if (response.status !== 204) throw new Error("204 status를 반환하지 않음");
             } catch {
                 alert("정상적으로 처리되지 않았습니다.");
             } finally {
-                history.push("/notice");
+                history.push("/inquiry");
             }
         }
     };
 
     return (
-        <div className="noticeDetail-wrap">
+        <div className="inquiryDetail-wrap">
             {data ? (
-                <div className="noticeDetail-board">
-                    <div className="noticeDetail-route">홈 &nbsp;&gt;&nbsp; 고객센터 &nbsp; &gt;&nbsp; 공지사항</div>
-                    <Link to="/notice" className="noticeDetail-text">
-                        공지사항
+                <div className="inquiryDetail-board">
+                    <div className="inquiryDetail-route">홈 &nbsp;&gt;&nbsp; 고객센터 &nbsp; &gt;&nbsp; 1:1 문의</div>
+                    <Link to="/inquiry" className="inquiryDetail-text">
+                        1:1 문의
                     </Link>
-                    <div className="noticeDetail-category-line"></div>
-                    <div className="noticeDetail-tab-category">
+                    <div className="inquiryDetail-category-line"></div>
+                    <div className="inquiryDetail-tab-category">
                         <span>NO</span>
                         <span>{data.title}</span>
                         <span>{data.createdDate.substr(0, 9)}</span>
                     </div>
-                    <div className="noticeDetail-category-line"></div>
-                    <div className="noticeDetail-main" dangerouslySetInnerHTML={{ __html: data.content }}></div>
-                    <div className="noticeDetail-category-line"></div>
+                    <div className="inquiryDetail-category-line"></div>
+                    <div className="inquiryDetail-main" dangerouslySetInnerHTML={{ __html: data.content }}></div>
+                    <div className="inquiryDetail-category-line"></div>
                     {next ? (
-                        <Link to={`/notice/${next.id}`} className="noticeDetail-tab-category">
+                        <Link to={`/notice/${next.id}`} className="inquiryDetail-tab-category">
                             <span>이전</span>
                             <span>{next.title}</span>
                             <span>{next.createdDate.substr(0, 9)}</span>
                         </Link>
                     ) : (
-                        <div className="noticeDetail-tab-category">
+                        <div className="inquiryDetail-tab-category">
                             <span>처음</span>
                             <span>처음 게시물입니다.</span>
                         </div>
                     )}
-                    <div className="noticeDetail-category-line"></div>
+                    <div className="inquiryDetail-category-line"></div>
                     {prev ? (
-                        <Link to={`/notice/${prev.id}`} className="noticeDetail-tab-category">
+                        <Link to={`/inquiry/${prev.id}`} className="inquiryDetail-tab-category">
                             <span>다음</span>
                             <span>{prev.title}</span>
                             <span>{prev.createdDate.substr(0, 9)}</span>
                         </Link>
                     ) : (
-                        <div className="noticeDetail-tab-category">
+                        <div className="inquiryDetail-tab-category">
                             <span>마지막</span>
                             <span>마지막 게시물입니다.</span>
                         </div>
                     )}
-                    <div className="noticeDetail-category-line"></div>
-                    <div className="noticeDetail-button-Area">
-                        <Link to={`/notice/${getId()}/edit`}>
-                            <button className="noticeDetail-register-btn">공지사항 수정</button>
-                        </Link>
+                    <div className="inquiryDetail-category-line"></div>
+                    <div className="inquiryDetail-button-Area">
                         <button
                             onClick={() => {
                                 deleteHandler();
                             }}
-                            className="noticeDetail-register-btn"
+                            className="inquiryDetail-register-btn"
                         >
-                            공지사항 삭제
+                            1:1 문의 삭제
                         </button>
                     </div>
                 </div>
@@ -102,4 +100,4 @@ const Notice = ({ history }) => {
         </div>
     );
 };
-export default withRouter(Notice);
+export default withRouter(Inquiry);

@@ -1,21 +1,21 @@
-.noticeDetail-wrap {
+.inquiryDetail-wrap {
     width: 100%;
     margin-top: 130px;
     margin-bottom: 100px;
 }
 
-.noticeDetail-board {
+.inquiryDetail-board {
     margin-left: 315px;
     margin-right: 315px;
 }
 
-.noticeDetail-text {
+.inquiryDetail-text {
     text-align: left;
     font: normal normal normal 40px/25px AppleSDGothicNeoB00;
     letter-spacing: 0px;
 }
 
-.noticeDetail-category-line {
+.inquiryDetail-category-line {
     top: 228px;
     left: 315px;
     /* width: 1290px; */
@@ -25,7 +25,7 @@
     margin: 15px 0px 15px 0px;
 }
 
-.noticeDetail-tab-category {
+.inquiryDetail-tab-category {
     display: flex;
     font: normal normal normal 15px/20px AppleSDGothicNeoB00;
     letter-spacing: 0px;
@@ -33,24 +33,24 @@
     opacity: 1;
 }
 
-.noticeDetail-tab-category span:first-child {
+.inquiryDetail-tab-category span:first-child {
     margin-left: 8%;
     width: 15%;
     color: #999999;
 }
 
-.noticeDetail-tab-category span:nth-child(2) {
+.inquiryDetail-tab-category span:nth-child(2) {
     width: 60%;
 }
 
-.noticeDetail-main {
+.inquiryDetail-main {
     margin-left: 8%;
     width: 84%;
-    word-break: break-all;
     min-height: 200px;
+    word-break: break-all;
 }
 
-.noticeDetail-route {
+.inquiryDetail-route {
     font: normal normal normal 15px/25px AppleSDGothicNeoR00;
     /* letter-spacing: 0px; */
     color: #636363;
@@ -58,7 +58,7 @@
     margin-bottom: 30px;
 }
 
-.noticeDetail-register-btn {
+.inquiryDetail-register-btn {
     height: 30px;
     display: flex;
     align-items: center;
@@ -69,10 +69,10 @@
     border: 1px solid #d1d1d1;
     border-radius: 5px;
 }
-.noticeDetail-register-btn:hover {
+.inquiryDetail-register-btn:hover {
     background: #ebebeb;
 }
-.noticeDetail-button-Area {
+.inquiryDetail-button-Area {
     display: flex;
     width: 100%;
     justify-content: flex-end;

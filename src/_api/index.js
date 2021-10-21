@@ -30,4 +30,16 @@ export const inquiryApi = {
         api.get("/api/v1/qnas?", {
             params: { page, size: 8 },
         }),
+    postInquiry: (category, name, phoneNumber, email, title, content, isPublic) =>
+        api.post("/api/v1/qnas", {
+            category,
+            name,
+            phoneNumber,
+            email,
+            title,
+            content,
+            isPublic,
+        }),
+    inquiryDetail: (id) => api.get(`/api/v1/qnas/${id}`),
+    deleteInquiry: (id) => api.delete(`/api/v1/qnas/${id}`),
 };

@@ -6,19 +6,18 @@ import { inquiryApi } from "../_api";
 const BoardItem = ({ title, index, createdDate, viewCount }) => {
     return (
         <>
-            <div className="notice-tab-post">
+            <div className="inquiry-tab-post">
                 <span>{index}</span>
                 <span>{title}</span>
                 <span>{createdDate}</span>
-                <span>{viewCount}</span>
             </div>
-            <div className="notice-tab-post-line"></div>
+            <div className="inquiry-tab-post-line"></div>
         </>
     );
 };
 
 const Notice = () => {
-    const [noticeList, setNoticeList] = useState([]);
+    const [inquiryList, setInquiryList] = useState([]);
     const [inputVal, setinputVal] = useState();
     const [searchVal, setSearchVal] = useState("");
     const [page, setPage] = useState();
@@ -30,9 +29,9 @@ const Notice = () => {
     useEffect(() => {
         async function fetchData() {
             let {
-                data: { notices, maxPage },
+                data: { qnas, maxPage },
             } = await inquiryApi.getList(selectedBtn);
-            setNoticeList(notices);
+            setInquiryList(qnas);
             setPage(maxPage);
             let jsx = pageBtnHandler();
             setBtnJSX(jsx);
@@ -123,19 +122,18 @@ const Notice = () => {
                     <span>NO</span>
                     <span>제목</span>
                     <span>등록일</span>
-                    <span>조회수</span>
                 </div>
                 <div className="inquiry-category-line"></div>
-                {noticeList === [] ? (
+                {inquiryList === [] ? (
                     <div className="inquiry-loadingDiv"></div>
-                ) : noticeList === undefined ? (
+                ) : inquiryList === undefined ? (
                     <div className="inquiry-no-notice">문의 사항이 없습니다.</div>
                 ) : (
-                    noticeList
+                    inquiryList
                         .filter((item) => item.title.includes(searchVal))
                         .map((item, index) => (
                             <Link to={`inquiry/${item.id}`}>
-                                <BoardItem index={index + 1} title={item.title} createdDate={item.createdDate.substr(0, 10)} viewCount={item.viewCount} />
+                                <BoardItem index={index + 1} title={item.title} createdDate={item.createdDate.substr(0, 10)} />
                             </Link>
                         ))
                 )}
@@ -148,7 +146,7 @@ const Notice = () => {
                     >
                         &lt;
                     </button>
-                    {noticeList === undefined ? null : btnJSX}
+                    {inquiryList === undefined ? null : btnJSX}
                     <button
                         onClick={() => {
                             rightBtnHandler();
