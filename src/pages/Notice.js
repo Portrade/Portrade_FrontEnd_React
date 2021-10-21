@@ -18,7 +18,7 @@ const BoardItem = ({ title, index, createdDate, viewCount }) => {
 };
 
 const Notice = () => {
-    const [noticeList, setNoticeList] = useState();
+    const [noticeList, setNoticeList] = useState([]);
     const [inputVal, setinputVal] = useState();
     const [searchVal, setSearchVal] = useState("");
     const [page, setPage] = useState();
@@ -47,7 +47,6 @@ const Notice = () => {
     const submitHandler = (e) => {
         setSearchVal(inputVal);
         e.preventDefault();
-        setinputVal("");
     };
 
     const pageBtnHandler = () => {
@@ -72,7 +71,6 @@ const Notice = () => {
     };
     const rightBtnHandler = () => {
         if (selectedBtn !== maxPage) setBtn(selectedBtn + 1);
-        console.log(selectedBtn);
     };
 
     return (
@@ -94,8 +92,10 @@ const Notice = () => {
                     <span>조회수</span>
                 </div>
                 <div className="notice-category-line"></div>
-                {noticeList === undefined ? (
+                {noticeList === [] ? (
                     <div className="notice-loadingDiv"></div>
+                ) : noticeList === undefined ? (
+                    <div>공지사항이 없습니다.</div>
                 ) : (
                     noticeList
                         .filter((item) => item.title.includes(searchVal))

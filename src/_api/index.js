@@ -17,10 +17,29 @@ export const signUp = (formData) => api.post("/api/v1/users", formData);
 export const noticeApi = {
     getList: (page) =>
         api.get("/api/v1/notices?", {
-            params: { page, size: 5 },
+            params: { page, size: 8 },
         }),
     postList: (title, contents) => api.post("/api/v1/notices", { title: title, content: contents }),
     getNoticeDetail: (noticeId) => api.get(`/api/v1/notices/${noticeId}`),
     editNotice: (noticeId, title, content) => api.put(`/api/v1/notices/${noticeId}`, { title: title, content: content }),
     deleteNotice: (noticeId) => api.delete(`/api/v1/notices/${noticeId}`),
+};
+
+export const inquiryApi = {
+    getList: (page) =>
+        api.get("/api/v1/qnas?", {
+            params: { page, size: 8 },
+        }),
+    postInquiry: (category, name, phoneNumber, email, title, content, isPublic) =>
+        api.post("/api/v1/qnas", {
+            category,
+            name,
+            phoneNumber,
+            email,
+            title,
+            content,
+            isPublic,
+        }),
+    inquiryDetail: (id) => api.get(`/api/v1/qnas/${id}`),
+    deleteInquiry: (id) => api.delete(`/api/v1/qnas/${id}`),
 };
