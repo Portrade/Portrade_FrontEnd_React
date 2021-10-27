@@ -22,7 +22,7 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(ActionCreators.login({ id: userId, password }));
+        dispatch(ActionCreators.login({ userId, password }));
     };
 
     const onSuccessGoogle = async (res) => {
@@ -100,7 +100,7 @@ const Login = () => {
                     <form className="email-login" onSubmit={handleSubmit}>
                         <Grid container direction={"column"} spacing={2}>
                             <Grid item>
-                                <Input name="id" label="이메일 또는 아이디" type="text" autoFocus setChange={setUserId} />
+                                <Input name="userId" label="이메일 또는 아이디" type="text" autoFocus setChange={setUserId} />
                             </Grid>
                             <Grid item>
                                 <Input name="password" label="비밀번호" type="password" setChange={setPassword} />
