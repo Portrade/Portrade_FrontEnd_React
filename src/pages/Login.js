@@ -9,11 +9,10 @@ import "./css/login.css";
 import ActionCreators from "../_actions";
 import Input from "../components/auth/Input";
 
-
 const Login = () => {
     const dispatch = useDispatch();
-    const [userId, setUserId] = useState('');
-    const [password, setPassword] = useState('');
+    const [userId, setUserId] = useState("");
+    const [password, setPassword] = useState("");
 
     const config = {
         headers: {
@@ -23,7 +22,7 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(ActionCreators.login({ userId, password }));
+        dispatch(ActionCreators.login({ id: userId, password }));
     };
 
     const onSuccessGoogle = async (res) => {
@@ -42,7 +41,6 @@ const Login = () => {
 
     return (
         <div className="login">
-
             {/* 왼쪽 박스 */}
             <div className="login-left-wallpaper">
                 <div className="login-left-wallpaper-img"></div>
@@ -53,14 +51,19 @@ const Login = () => {
                         POTRADE
                     </Link>
                     <div className="login-slogan">
-                        PORTRADE와 함께<br />
+                        PORTRADE와 함께
+                        <br />
                         취업을 향한 여정을 시작해보세요.
                     </div>
                     <div className="login-slogan-text">
-                        다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.<br/>
-                        취업난 속에서 기업과 청년의 연결을 도모합니다.<br/>
-                        다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.<br/>
-                        취업난 속에서 기업과 청년의 연결을 도모합니다.<br/>
+                        다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.
+                        <br />
+                        취업난 속에서 기업과 청년의 연결을 도모합니다.
+                        <br />
+                        다양한 분야의 포트폴리오를 업로드 할 수 있는 공간입니다.
+                        <br />
+                        취업난 속에서 기업과 청년의 연결을 도모합니다.
+                        <br />
                     </div>
                     <Link to="/register" className="login-btn-register">
                         회원가입
@@ -74,11 +77,10 @@ const Login = () => {
             {/* 오른쪽 박스 */}
             <div className="login-right">
                 <div className="login-right-box">
-                    <div className="login-name">
-                        로그인
-                    </div>
+                    <div className="login-name">로그인</div>
                     <div className="login-guide">
-                        포트레이트의 회원이 되시면, 포트폴리오 등록 및 기업 공고 열람<br/>
+                        포트레이트의 회원이 되시면, 포트폴리오 등록 및 기업 공고 열람
+                        <br />
                         서비스를 간편하게 이용하실 수 있습니다.
                     </div>
 
@@ -97,15 +99,17 @@ const Login = () => {
 
                     <form className="email-login" onSubmit={handleSubmit}>
                         <Grid container direction={"column"} spacing={2}>
-                            <Grid item >
-                                <Input name="userId" label="이메일 또는 아이디" type="text" autoFocus setChange={setUserId} />
+                            <Grid item>
+                                <Input name="id" label="이메일 또는 아이디" type="text" autoFocus setChange={setUserId} />
                             </Grid>
                             <Grid item>
                                 <Input name="password" label="비밀번호" type="password" setChange={setPassword} />
                             </Grid>
                         </Grid>
 
-                        <button className="btn-login" type="submit">로그인</button>
+                        <button className="btn-login" type="submit">
+                            로그인
+                        </button>
 
                         <div className="login-option">
                             <div>
@@ -117,7 +121,6 @@ const Login = () => {
                             <p className="login-find-pw">비밀번호를 잊으셨나요?</p>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>

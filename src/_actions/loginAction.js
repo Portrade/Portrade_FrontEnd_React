@@ -3,30 +3,31 @@ import * as axios from "../_api/index.js";
 
 export const logout = () => async (dispatch) => {
     try {
-        dispatch({ type: types.LOGOUT_USER, isLogin: false })
+        dispatch({ type: types.LOGOUT_USER, isLogin: false });
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 export const login = (formData) => async (dispatch) => {
     try {
+        console.log(formData);
         const { data } = await axios.logIn(formData);
-        
-        dispatch({ type: types.LOGIN_USER, data, isLogin: true })
+
+        dispatch({ type: types.LOGIN_USER, data, isLogin: true });
 
         window.history.back(); //push("/");
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 export const signup = (formData) => async (dispatch) => {
-    try {       
+    try {
         const { data } = await axios.signUp(formData);
-        
+
         window.history.push("/login");
     } catch (error) {
         console.log(error);
     }
-}
+};
