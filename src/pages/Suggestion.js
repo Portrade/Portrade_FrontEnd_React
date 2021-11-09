@@ -121,33 +121,56 @@ const Suggestion = () => {
         경상남도: ["거제시", "김해시", "마산시", "밀양시", "사천시", "양산시", "진주시", "진해시", "창원시", "통영시", "거창군", "고성군", "남해군", "산청군", "의령군", "창녕군", "하동군", "함안군", "함양군", "합천군"],
         제주도: ["서귀포시", "제주시", "남제주군", "북제주군"],
     };
+    const jobData = [
+        "기획전략",
+        "마케팅·홍보·조사",
+        "회계·사무·재무",
+        "인사·노무·HRD",
+        "총무·법무·사무",
+        "IT개발·데이터",
+        "디자인",
+        "영업·판매·무역",
+        "고객상담·TM",
+        "구매·자재·물류",
+        "상품기획·MD",
+        "운전·운송·배송",
+        "서비스",
+        "생산",
+        "건설·건축",
+        "의료",
+        "연구·R&D",
+        "교육",
+        "미디어·문화·스포츠",
+        "금융·보험",
+        "공공·복지",
+    ];
     const [inputVal, setInpuVal] = useState("");
     const [areaSelectOpen, setAreaSelectOpen] = useState(false);
     const [jobSelectOpen, setJobSelectOpen] = useState(false);
-    const [liAreaButton, setliAreaButton] = useState(false);
     const [sido, setSiDo] = useState("시/도 선택");
+    const [job, setJob] = useState("");
 
     const searchInputHandler = ({ target: { value } }) => {
         setInpuVal(value);
     };
 
     const selectOpener = (e, state, stateUpdateFunc) => {
-        e.preventDefault();
+        e.preventDefault(areaSelectOpen);
         setAreaSelectOpen(false);
         setJobSelectOpen(false);
         stateUpdateFunc(!state);
     };
 
-    const handleSelect = (e, stateUpdateFunc) => {
-        stateUpdateFunc(e.target.value);
-    };
-
-    const liButtonFocus = (e) => {
-        e.target.innerText += "⇨";
+    const liButtonFocus = (e, stateUpdateFunc) => {
+        const arrow = document.createElement("span");
+        arrow.innerText = "⇨";
+        let item = e.target;
+        stateUpdateFunc(e.target.innerText);
+        item.appendChild(arrow);
     };
     const liButtonFocusOut = (e) => {
-        console.log(e.target.innerText);
-        e.target.innerText = e.target.innerText.slice(0, -1);
+        const target = e.target;
+        target.removeChild(target.querySelector("span"));
     };
 
     const [autoCarouselData, setAutoCaruoselData] = useState([
@@ -227,48 +250,62 @@ const Suggestion = () => {
                 <Slider {...autoCarouselSetting}>{autoCaruosel}</Slider>
             </div>
             <div className="suggestion-arrow-carousel-container">
-                <div className="suggestion-category-type">추천 기업 공고</div>
+                <h2 className="suggestion-subTitle">추천 기업 공고</h2>
                 <Slider {...arrowCarouselSetting}>{arrowCaruosel}</Slider>
             </div>
             <div className="suggestion-sort-container">
-                <div className="suggestion-category-type">정렬 기준</div>
+                <h2 className="suggestion-subTitle">정렬 기준</h2>
                 <div className="suggestion-input-container">
-                    <form className="suggestion-form">
-                        <i className="suggestion-search-icon" alt="search_icon" />
-                        <input className="suggestion-input" onChange={(e) => searchInputHandler(e)} value={inputVal} placeholder="기업 공고 검색"></input>
-                        <button className={"suggestion-button suggestion-area-button " + (areaSelectOpen ? "suggestion-button-focus" : null)} onClick={(e) => selectOpener(e, areaSelectOpen, setAreaSelectOpen)}>
-                            지역▽
-                        </button>
-                        {areaSelectOpen ? (
-                            <div className="suggestion-area-container">
-                                <ul className="suggestion-area-ul" value={sido} onChange={(e) => handleSelect(e, setSiDo)}>
-                                    {siDoData.map((city, index) => {
-                                        return (
-                                            <li className="suggestion-area-li" key={index} value={city}>
-                                                <button type="button" onFocus={(e) => liButtonFocus(e)} onBlur={(e) => liButtonFocusOut(e)} className="suggestion-li-button">
-                                                    {city}
-                                                </button>
-                                            </li>
-                                        );
-                                    })}
-                                </ul>
-                                {sido !== "시/도 선택" ? (
-                                    <select className="suggestion-area-select">
-                                        {areaData[sido].map((city, index) => {
-                                            return (
-                                                <option className="suggestion-select-option" key={index} value={sido}>
-                                                    {city}
-                                                </option>
-                                            );
-                                        })}
-                                    </select>
-                                ) : null}
-                            </div>
-                        ) : null}
-                        <button className={"suggestion-button suggestion-job-button " + (jobSelectOpen ? "suggestion-button-focus" : null)} onClick={(e) => selectOpener(e, jobSelectOpen, setJobSelectOpen)}>
-                            직종▽
-                        </button>
-                    </form>
+                    <i className="suggestion-search-icon" alt="search_icon" />
+                    <input className="suggestion-input" onChange={(e) => searchInputHandler(e)} value={inputVal} placeholder="기업 공고 검색"></input>
+                    <button className={"suggestion-sort-button suggestion-sort-area-button " + (areaSelectOpen ? "suggestion-button-focus" : null)} onClick={(e) => selectOpener(e, areaSelectOpen, setAreaSelectOpen)}>
+                        지역▽
+                    </button>
+
+                    {areaSelectOpen ? (
+                        <div className="suggestion-area-container">
+                            <ul className="suggestion-area-ul">
+                                {siDoData.map((city, index) => {
+                                    return (
+                                        <li className="suggestion-area-li" key={index}>
+                                            <button className="suggestion-area-button" onFocus={(e) => liButtonFocus(e, setSiDo)} onBlur={(e) => liButtonFocusOut(e)}>
+                                                {city}
+                                            </button>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        </div>
+                    ) : null}
+                    {(sido !== "시/도 선택") & areaSelectOpen ? (
+                        <ul className="suggestion-area-city-ul">
+                            {areaData[sido].map((city, index) => {
+                                return (
+                                    <li className="suggestion-area-li" key={index}>
+                                        <button className="suggestion-area-button">{city}</button>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    ) : null}
+                    <button className={"suggestion-sort-button suggestion-sort-job-button " + (jobSelectOpen ? "suggestion-button-focus" : null)} onClick={(e) => selectOpener(e, jobSelectOpen, setJobSelectOpen)}>
+                        직종▽
+                    </button>
+                    {jobSelectOpen ? (
+                        <div className="suggestion-job-container">
+                            <ul className="suggestion-job-ul">
+                                {jobData.map((city, index) => {
+                                    return (
+                                        <li className="suggestion-area-li" key={index}>
+                                            <button className="suggestion-area-button" onFocus={(e) => liButtonFocus(e, setJob)} onBlur={(e) => liButtonFocusOut(e)}>
+                                                {city}
+                                            </button>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        </div>
+                    ) : null}
                 </div>
             </div>
         </div>
