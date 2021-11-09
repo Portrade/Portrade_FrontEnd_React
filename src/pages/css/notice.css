@@ -40,7 +40,6 @@
     transform: translateX(-20px);
     width: 27px;
     height: 27px;
-    color: black;
 }
 
 .notice-search-input:focus {
