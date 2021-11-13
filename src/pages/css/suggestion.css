@@ -170,6 +170,9 @@
     border: none;
     font: normal normal normal 15px/10px AppleSDGothicNeoEB00;
     position: absolute;
+    display: flex;
+    align-items: center;
+    padding-left: 60px;
 }
 .suggestion-sort-area-button {
     top: -50px;
@@ -254,4 +257,17 @@
     border-left: 0;
     padding-left: 0;
     padding: 16px 0 16px 0;
+}
+
+.suggestion-sort-button div {
+    margin-left: 30px;
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+    background: white;
+    align-items: center;
+    justify-content: center;
 }
