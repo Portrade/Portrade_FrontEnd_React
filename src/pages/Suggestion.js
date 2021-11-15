@@ -259,7 +259,7 @@ const Suggestion = () => {
                     <i className="suggestion-search-icon" alt="search_icon" />
                     <input className="suggestion-input" onChange={(e) => searchInputHandler(e)} value={inputVal} placeholder="기업 공고 검색"></input>
                     <button className={"suggestion-sort-button suggestion-sort-area-button " + (areaSelectOpen ? "suggestion-button-focus" : null)} onClick={(e) => selectOpener(e, areaSelectOpen, setAreaSelectOpen)}>
-                        지역▽
+                        지역▽<div>{sido !== "시/도 선택" ? "✔️" : null}</div>
                     </button>
 
                     {areaSelectOpen ? (
@@ -289,7 +289,7 @@ const Suggestion = () => {
                         </ul>
                     ) : null}
                     <button className={"suggestion-sort-button suggestion-sort-job-button " + (jobSelectOpen ? "suggestion-button-focus" : null)} onClick={(e) => selectOpener(e, jobSelectOpen, setJobSelectOpen)}>
-                        직종▽
+                        직종▽<div>{job !== "" ? "✔️" : null}</div>
                     </button>
                     {jobSelectOpen ? (
                         <div className="suggestion-job-container">
