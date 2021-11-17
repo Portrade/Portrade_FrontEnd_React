@@ -13,6 +13,7 @@ export { default as NoticePost } from "./NoticePost";
 export { default as NoticeDetail } from "./NoticeDetail";
 export { default as NoticeEdit } from "./NoticeEdit";
 export { default as FAQ } from "./FAQ";
+export { default as FAQPost } from "./FAQPost";
 export { default as PortfolioRegister } from "./PortfolioRegister";
 export { default as Inquiry } from "./Inquiry";
 export { default as InquiryPost } from "./InquiryPost";

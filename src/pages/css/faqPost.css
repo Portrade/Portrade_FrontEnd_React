@@ -1,0 +1,146 @@
+.faqPost-wrap {
+    width: 100%;
+    margin-top: 130px;
+}
+
+.faqPost-board {
+    margin-left: 315px;
+    margin-right: 315px;
+}
+
+.faqPost-line {
+    top: 228px;
+    left: 315px;
+    height: 0px;
+    border: 1px solid #000000;
+    opacity: 1;
+    margin: 18px 0px 18px 0px;
+}
+
+.faqPost-text {
+    text-align: left;
+    font: normal normal normal 40px/25px AppleSDGothicNeoB00;
+    letter-spacing: 0px;
+}
+
+.faqPost-route {
+    font: normal normal normal 15px/25px AppleSDGothicNeoR00;
+    /* letter-spacing: 0px; */
+    color: #636363;
+    margin-left: 30px;
+}
+
+.faqPost-editor {
+    height: 400px;
+    margin-bottom: 50px;
+}
+
+.faqPost-register-btn {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    margin: 0px 10px 0px 10px;
+    box-shadow: 0px 1px 2px #00000029;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    font: normal normal normal 20px/25px AppleSDGothicNeoR00;
+    margin: 10px 0 10px 0;
+    padding: 20px;
+}
+.faqPost-btn-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.faqPost-register-btn:hover {
+    background: #ebebeb;
+}
+
+.faqPost-form {
+    display: grid;
+    grid-template-columns: 15% 85%;
+    row-gap: 10px;
+}
+.faqPost-input {
+    height: 33px;
+    box-shadow: 0px 2px 5px #00000029;
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+.faqPost-name-main {
+    width: 50%;
+}
+
+.faqPost-phone-main {
+    width: 35%;
+}
+.faqPost-phone-section {
+    display: flex;
+}
+.faqPost-phone-header {
+    box-sizing: border-box;
+    height: 33px;
+    padding: 0px 2px 0px 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 2px 5px #00000029;
+    border: 1px solid #c9c9c9;
+    font-family: AppleSDGothicNeoR00;
+    color: #636363;
+    margin-right: 10px;
+    width: calc(15% - 10px);
+    border-radius: 5px;
+}
+.faqPost-email-section span {
+    font-family: AppleSDGothicNeoR00;
+    font-size: 20px;
+    margin: 0 5px;
+}
+.faqPost-email-main {
+    width: 22.5%;
+}
+.faqPost-email-domain {
+    width: 23%;
+}
+.faqPost-email-select {
+    width: 20%;
+    margin-left: 10px;
+}
+.faqPost-input:focus {
+    outline: none;
+}
+
+.faqPost-main-container {
+    display: flex;
+}
+
+.faqPost-label {
+    font: normal normal normal 15px/38px AppleSDGothicNeoR00;
+}
+
+.faqPost-btn-section {
+    width: 100%;
+}
+.faqPost-btn {
+    font: normal normal normal 15px/38px AppleSDGothicNeoR00;
+
+    background-color: white;
+    border: 1px solid #c9c9c9;
+    border-radius: 10px;
+    width: 80px;
+    height: 50px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.faqPost-btn:hover {
+    background-color: #dfdfdf;
+}
+
+.faqPost-star {
+    color: red;
+}
