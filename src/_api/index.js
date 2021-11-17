@@ -43,3 +43,8 @@ export const inquiryApi = {
     inquiryDetail: (id) => api.get(`/api/v1/qnas/${id}`),
     deleteInquiry: (id) => api.delete(`/api/v1/qnas/${id}`),
 };
+
+export const faqApi = {
+    getList: () => api.get("/api/v1/faqs?"),
+    postFAQ: (title, content) => api.post("/api/v1/faqs", { title, content }),
+};
