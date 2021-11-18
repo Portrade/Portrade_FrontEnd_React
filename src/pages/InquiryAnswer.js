@@ -58,13 +58,13 @@ const InquiryAnswer = ({ history, match }) => {
                 const {
                     params: { id },
                 } = match;
-                console.log(id);
+
                 response = await inquiryApi.inquiryAnswer(id, title, content, isPublic);
                 if (response.status !== 201) throw new Error("201 status를 반환하지 않음");
             } catch {
                 alert("정상적으로 처리되지 않았습니다.");
             } finally {
-                // history.push("/inquiry");
+                history.push("/inquiry");
             }
         } else {
             alert("모든 항목을 입력해야 합니다.");

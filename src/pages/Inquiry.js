@@ -29,16 +29,15 @@ const Inquiry = () => {
         async function fetchData() {
             let type;
             if (typeArr[0] === 1) type = "all";
-            else if (typeArr[1] === 1) type = "answsered";
+            else if (typeArr[1] === 1) type = "answered";
             else type = "unanswered";
-            const encodeKeyword = encodeURIComponent(keyword);
             let {
                 data: {
                     qnas,
                     page: { totalPage },
                 },
-            } = await inquiryApi.getList(selectedBtn, type, encodeKeyword);
-
+            } = await inquiryApi.getList(selectedBtn, type, keyword);
+            console.log(qnas);
             setInquiryList(qnas);
             setMaxPage(totalPage);
             setBtnJSX(pageBtnHandler(totalPage));
