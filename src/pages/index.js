@@ -18,3 +18,4 @@ export { default as PortfolioRegister } from "./PortfolioRegister";
 export { default as Inquiry } from "./Inquiry";
 export { default as InquiryPost } from "./InquiryPost";
 export { default as InquiryDetail } from "./InquiryDetail";
+export { default as InquiryAnswer } from "./InquiryAnswer";

@@ -25,7 +25,7 @@ const Notice = ({ history }) => {
             setData(data);
         }
         fetchData();
-    }, [window.location.href]);
+    }, []);
     const deleteHandler = async () => {
         let check = window.confirm("정말 삭제하시겠습니까?");
         let response;

@@ -19,9 +19,8 @@ const BoardItem = ({ title, index, createdDate, viewCount }) => {
 
 const Notice = () => {
     const [noticeList, setNoticeList] = useState([]);
-    const [inputVal, setinputVal] = useState();
+    const [inputVal, setinputVal] = useState("");
     const [searchVal, setSearchVal] = useState("");
-    const [page, setPage] = useState();
     const [selectedBtn, setBtn] = useState(1);
     const [btnJSX, setBtnJSX] = useState();
     const [maxPage, setMaxPage] = useState();
@@ -29,16 +28,17 @@ const Notice = () => {
     useEffect(() => {
         async function fetchData() {
             let {
-                data: { notices, maxPage },
-            } = await noticeApi.getList(selectedBtn);
+                data: {
+                    notices,
+                    page: { totalPage },
+                },
+            } = await noticeApi.getList(selectedBtn, searchVal);
             setNoticeList(notices);
-            setPage(maxPage);
-            let jsx = pageBtnHandler();
-            setBtnJSX(jsx);
-            setMaxPage(maxPage);
+            setMaxPage(totalPage);
+            setBtnJSX(pageBtnHandler(totalPage));
         }
         fetchData();
-    }, [page, selectedBtn]);
+    }, [selectedBtn, searchVal]);
 
     const inputHandler = ({ target: { value } }) => {
         setinputVal(value);
@@ -49,11 +49,12 @@ const Notice = () => {
         e.preventDefault();
     };
 
-    const pageBtnHandler = () => {
+    const pageBtnHandler = (maxPage) => {
         let btn = [];
-        for (let i = 1; i <= page; i++) {
+        for (let i = 1; i <= maxPage; i++) {
             btn.push(
                 <button
+                    key={i}
                     onClick={() => {
                         setBtn(i);
                     }}
@@ -80,7 +81,7 @@ const Notice = () => {
                 <p className="notice-text">공지사항</p>
 
                 <form className="notice-search-wrap" onSubmit={(e) => submitHandler(e)}>
-                    <input className="notice-search-input" type="text" placeholder="검색어를 입력해주세요" onChange={(e) => inputHandler(e)} value={inputVal}></input>
+                    <input className="notice-search-input" type="text" placeholder="검색어를 입력해주세요" onChange={(e) => inputHandler(e)} value={inputVal || ""}></input>
                     <i className="notice-search-icon" alt="search_black" />
                 </form>
 
@@ -97,13 +98,11 @@ const Notice = () => {
                 ) : noticeList === undefined ? (
                     <div>공지사항이 없습니다.</div>
                 ) : (
-                    noticeList
-                        .filter((item) => item.title.includes(searchVal))
-                        .map((item, index) => (
-                            <Link to={`notice/${item.id}`}>
-                                <BoardItem index={index + 1} title={item.title} createdDate={item.createdDate.substr(0, 10)} viewCount={item.viewCount} />
-                            </Link>
-                        ))
+                    noticeList.map((item, index) => (
+                        <Link to={`notice/${item.id}`} key={index}>
+                            <BoardItem index={index + 1} title={item.title} createdDate={item.createdDate.substr(0, 10)} viewCount={item.viewCount} />
+                        </Link>
+                    ))
                 )}
                 <div className="notice-page-btn">
                     <button
@@ -114,7 +113,7 @@ const Notice = () => {
                     >
                         &lt;
                     </button>
-                    {noticeList === undefined ? null : btnJSX}
+                    {btnJSX ? btnJSX : null}
                     <button
                         onClick={() => {
                             rightBtnHandler();

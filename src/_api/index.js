@@ -15,8 +15,8 @@ export const logIn = (formData) => api.post("/api/v1/auth/login", formData);
 export const signUp = (formData) => api.post("/api/v1/users", formData);
 
 export const noticeApi = {
-    getList: (page) =>
-        api.get("/api/v1/notices?", {
+    getList: (page, keyword) =>
+        api.get(`/api/v1/notices?keyword=${encodeURIComponent(keyword)}`, {
             params: { page, size: 8 },
         }),
     postList: (title, contents) => api.post("/api/v1/notices", { title: title, content: contents }),
@@ -26,9 +26,9 @@ export const noticeApi = {
 };
 
 export const inquiryApi = {
-    getList: (page) =>
-        api.get("/api/v1/qnas?", {
-            params: { page, size: 8 },
+    getList: (page, type, keyword) =>
+        api.get(`/api/v1/qnas?keyword=${encodeURIComponent(keyword)}`, {
+            params: { page, size: 8, type },
         }),
     postInquiry: (category, name, phoneNumber, email, title, content, isPublic) =>
         api.post("/api/v1/qnas", {
@@ -42,6 +42,7 @@ export const inquiryApi = {
         }),
     inquiryDetail: (id) => api.get(`/api/v1/qnas/${id}`),
     deleteInquiry: (id) => api.delete(`/api/v1/qnas/${id}`),
+    inquiryAnswer: (id, title, content, isPublic) => api.post(`/api/v1/qnas/${id}/answer`, { title, content, isPublic }),
 };
 
 export const faqApi = {

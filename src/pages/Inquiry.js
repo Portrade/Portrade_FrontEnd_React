@@ -16,11 +16,10 @@ const BoardItem = ({ title, index, createdDate, viewCount }) => {
     );
 };
 
-const Notice = () => {
+const Inquiry = () => {
     const [inquiryList, setInquiryList] = useState([]);
-    const [inputVal, setinputVal] = useState();
-    const [searchVal, setSearchVal] = useState("");
-    const [page, setPage] = useState();
+    const [inputVal, setinputVal] = useState("");
+    const [keyword, setSearchVal] = useState("");
     const [selectedBtn, setBtn] = useState(1);
     const [btnJSX, setBtnJSX] = useState();
     const [maxPage, setMaxPage] = useState();
@@ -28,17 +27,23 @@ const Notice = () => {
 
     useEffect(() => {
         async function fetchData() {
+            let type;
+            if (typeArr[0] === 1) type = "all";
+            else if (typeArr[1] === 1) type = "answered";
+            else type = "unanswered";
             let {
-                data: { qnas, maxPage },
-            } = await inquiryApi.getList(selectedBtn);
+                data: {
+                    qnas,
+                    page: { totalPage },
+                },
+            } = await inquiryApi.getList(selectedBtn, type, keyword);
+            console.log(qnas);
             setInquiryList(qnas);
-            setPage(maxPage);
-            let jsx = pageBtnHandler();
-            setBtnJSX(jsx);
-            setMaxPage(maxPage);
+            setMaxPage(totalPage);
+            setBtnJSX(pageBtnHandler(totalPage));
         }
         fetchData();
-    }, [page, selectedBtn]);
+    }, [typeArr, selectedBtn, keyword]);
 
     const inputHandler = ({ target: { value } }) => {
         setinputVal(value);
@@ -49,11 +54,12 @@ const Notice = () => {
         e.preventDefault();
     };
 
-    const pageBtnHandler = () => {
+    const pageBtnHandler = (page) => {
         let btn = [];
         for (let i = 1; i <= page; i++) {
             btn.push(
                 <button
+                    key={i}
                     onClick={() => {
                         setBtn(i);
                     }}
@@ -70,6 +76,7 @@ const Notice = () => {
         if (selectedBtn !== 1) setBtn(selectedBtn - 1);
     };
     const rightBtnHandler = () => {
+        console.log(maxPage);
         if (selectedBtn !== maxPage) setBtn(selectedBtn + 1);
     };
 
@@ -129,13 +136,11 @@ const Notice = () => {
                 ) : inquiryList === undefined ? (
                     <div className="inquiry-no-notice">문의 사항이 없습니다.</div>
                 ) : (
-                    inquiryList
-                        .filter((item) => item.title.includes(searchVal))
-                        .map((item, index) => (
-                            <Link to={`inquiry/${item.id}`}>
-                                <BoardItem index={index + 1} title={item.title} createdDate={item.createdDate.substr(0, 10)} />
-                            </Link>
-                        ))
+                    inquiryList.map((item, index) => (
+                        <Link to={`inquiry/${item.id}`} key={index}>
+                            <BoardItem index={index + 1} title={item.title} createdDate={item.createdDate.substr(0, 10)} />
+                        </Link>
+                    ))
                 )}
                 <div className="inquiry-page-btn">
                     <button
@@ -146,7 +151,7 @@ const Notice = () => {
                     >
                         &lt;
                     </button>
-                    {inquiryList === undefined ? null : btnJSX}
+                    {btnJSX ? btnJSX : null}
                     <button
                         onClick={() => {
                             rightBtnHandler();
@@ -163,4 +168,4 @@ const Notice = () => {
         </div>
     );
 };
-export default Notice;
+export default Inquiry;

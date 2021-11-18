@@ -34,9 +34,8 @@ const Notice = ({ history }) => {
         "color",
         "background",
     ];
-    const [desc, setDesc] = useState();
-    const [title, setTitle] = useState();
-    const [data, setData] = useState();
+    const [desc, setDesc] = useState("");
+    const [title, setTitle] = useState("");
 
     const onChangeTitle = (e) => {
         const { target } = e;
@@ -48,12 +47,10 @@ const Notice = ({ history }) => {
 
     const editHandler = async () => {
         let response;
-        if (desc !== undefined && title !== undefined) {
+        if (desc !== "" && title !== "") {
             try {
-                console.log(getId());
                 response = await noticeApi.editNotice(getId(), title, desc);
-                console.log(response);
-                if (response.status !== 204) throw new Error("204 status를 반환하지 않음");
+                if (response.status !== 200) throw new Error("200 status를 반환하지 않음");
             } catch {
                 alert("정상적으로 처리되지 않았습니다.");
             } finally {
@@ -74,7 +71,6 @@ const Notice = ({ history }) => {
         async function fetchData() {
             let id = getId();
             let { data } = await noticeApi.getNoticeDetail(id);
-            setData(data);
             setTitle(data.title);
             setDesc(data.content);
         }
