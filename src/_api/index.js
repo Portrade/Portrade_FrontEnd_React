@@ -26,10 +26,12 @@ export const noticeApi = {
 };
 
 export const inquiryApi = {
-    getList: (page) =>
-        api.get("/api/v1/qnas?", {
-            params: { page, size: 8 },
-        }),
+    getList: (page, type, keyword) => {
+        console.log(keyword);
+        return api.get(`/api/v1/qnas?keyword=${keyword}`, {
+            params: { page, size: 8, type },
+        });
+    },
     postInquiry: (category, name, phoneNumber, email, title, content, isPublic) =>
         api.post("/api/v1/qnas", {
             category,
@@ -42,6 +44,7 @@ export const inquiryApi = {
         }),
     inquiryDetail: (id) => api.get(`/api/v1/qnas/${id}`),
     deleteInquiry: (id) => api.delete(`/api/v1/qnas/${id}`),
+    inquiryAnswer: (id, title, content, isPublic) => api.post(`/api/v1/qnas/${id}/answer`, { title, content, isPublic }),
 };
 
 export const faqApi = {

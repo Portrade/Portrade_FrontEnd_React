@@ -18,15 +18,14 @@ const Inquiry = ({ history }) => {
         async function fetchData() {
             setNext(null);
             setPrev(null);
-            let id = getId();
+            const id = getId();
             let { data } = await inquiryApi.inquiryDetail(id);
-            console.log(data);
             if (data.prev) setPrev(data.prev);
             if (data.next) setNext(data.next);
             setData(data);
         }
         fetchData();
-    }, [window.location.href]);
+    }, []);
     const deleteHandler = async () => {
         let check = window.confirm("정말 삭제하시겠습니까?");
         let response;
@@ -86,6 +85,9 @@ const Inquiry = ({ history }) => {
                     )}
                     <div className="inquiryDetail-category-line"></div>
                     <div className="inquiryDetail-button-Area">
+                        <button className="inquiryDetail-register-btn">
+                            <Link to={`/inquiry/${getId()}/answer`}>1:1 문의 답변</Link>
+                        </button>
                         <button
                             onClick={() => {
                                 deleteHandler();

@@ -19,7 +19,7 @@ const BoardItem = ({ title, index, createdDate, viewCount }) => {
 
 const Notice = () => {
     const [noticeList, setNoticeList] = useState([]);
-    const [inputVal, setinputVal] = useState();
+    const [inputVal, setinputVal] = useState("");
     const [searchVal, setSearchVal] = useState("");
     const [selectedBtn, setBtn] = useState(1);
     const [btnJSX, setBtnJSX] = useState();
@@ -81,7 +81,7 @@ const Notice = () => {
                 <p className="notice-text">공지사항</p>
 
                 <form className="notice-search-wrap" onSubmit={(e) => submitHandler(e)}>
-                    <input className="notice-search-input" type="text" placeholder="검색어를 입력해주세요" onChange={(e) => inputHandler(e)} value={inputVal}></input>
+                    <input className="notice-search-input" type="text" placeholder="검색어를 입력해주세요" onChange={(e) => inputHandler(e)} value={inputVal || ""}></input>
                     <i className="notice-search-icon" alt="search_black" />
                 </form>
 

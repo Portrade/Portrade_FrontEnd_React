@@ -1,6 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch, withRouter, Redirect } from "react-router-dom";
-import { Error, FAQPost, Home, Introduce, Login, Member, Mypage, Help, Register, Suggestion, Notice, NoticeDetail, NoticePost, NoticeEdit, FAQ, Portfolio, PortfolioRegister, Inquiry, InquiryPost, InquiryDetail } from "./pages";
+import {
+    Error,
+    FAQPost,
+    Home,
+    Introduce,
+    Login,
+    Member,
+    Mypage,
+    Help,
+    Register,
+    Suggestion,
+    Notice,
+    NoticeDetail,
+    NoticePost,
+    NoticeEdit,
+    FAQ,
+    Portfolio,
+    PortfolioRegister,
+    Inquiry,
+    InquiryPost,
+    InquiryDetail,
+    InquiryAnswer,
+} from "./pages";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import "./css/app.css";
@@ -38,6 +60,7 @@ const App = (props) => {
                 <Route exact path="/inquiry" component={Inquiry} />
                 <Route exact path="/inquiry/post" component={InquiryPost} />
                 <Route exact path="/inquiry/:id" component={InquiryDetail} />
+                <Route exact path="/inquiry/:id/answer" component={InquiryAnswer} />
                 <Route exact path="/faq" component={FAQ} />
                 <Route exact path="/faq/post" component={FAQPost} />
                 <Route component={Error} />

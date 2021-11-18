@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "./css/inquiryPost.css";
@@ -63,7 +63,7 @@ const Notice = ({ history }) => {
     const onEditorChange = (value) => {
         setContent(value);
     };
-    const isPublic = false;
+    const isPublic = true;
     const category = "";
 
     const submitHandler = async () => {
