@@ -37,7 +37,7 @@ const Inquiry = () => {
                     page: { totalPage },
                 },
             } = await inquiryApi.getList(selectedBtn, type, keyword);
-            console.log(qnas);
+            console.log(keyword);
             setInquiryList(qnas);
             setMaxPage(totalPage);
             setBtnJSX(pageBtnHandler(totalPage));

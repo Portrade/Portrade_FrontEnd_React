@@ -3,7 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import { inquiryApi } from "../_api";
 import "./css/inquiryDetail.css";
 
-const Inquiry = ({ history }) => {
+const Inquiry = ({ history, match }) => {
     const [data, setData] = useState();
     const [next, setNext] = useState();
     const [prev, setPrev] = useState();
@@ -23,9 +23,10 @@ const Inquiry = ({ history }) => {
             if (data.prev) setPrev(data.prev);
             if (data.next) setNext(data.next);
             setData(data);
+            console.log(data);
         }
         fetchData();
-    }, []);
+    }, [match.params.id]);
     const deleteHandler = async () => {
         let check = window.confirm("정말 삭제하시겠습니까?");
         let response;
@@ -59,7 +60,7 @@ const Inquiry = ({ history }) => {
                     <div className="inquiryDetail-main" dangerouslySetInnerHTML={{ __html: data.content }}></div>
                     <div className="inquiryDetail-category-line"></div>
                     {next ? (
-                        <Link to={`/notice/${next.id}`} className="inquiryDetail-tab-category">
+                        <Link to={`/inquiry/${next.id}`} className="inquiryDetail-tab-category">
                             <span>이전</span>
                             <span>{next.title}</span>
                             <span>{next.createdDate.substr(0, 9)}</span>

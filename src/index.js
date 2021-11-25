@@ -7,6 +7,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import reducers from "./_reducers";
 import ScrollToTop from "./pages/behavior/ScrollToTop";
 import thunk from "redux-thunk";
+import Modal from "react-modal";
 
 ReactDOM.render(
     <Provider store={createStore(reducers, compose(applyMiddleware(thunk)))}>
@@ -18,3 +19,5 @@ ReactDOM.render(
     </Provider>,
     document.getElementById("root")
 );
+
+Modal.setAppElement("#root");

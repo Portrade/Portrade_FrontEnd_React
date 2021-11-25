@@ -3,7 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import { noticeApi } from "../_api";
 import "./css/noticeDetail.css";
 
-const Notice = ({ history }) => {
+const Notice = ({ history, match }) => {
     const [data, setData] = useState();
     const [next, setNext] = useState();
     const [prev, setPrev] = useState();
@@ -16,16 +16,16 @@ const Notice = ({ history }) => {
 
     useEffect(() => {
         async function fetchData() {
+            let id = getId();
             setNext(null);
             setPrev(null);
-            let id = getId();
             let { data } = await noticeApi.getNoticeDetail(id);
             if (data.prev) setPrev(data.prev);
             if (data.next) setNext(data.next);
             setData(data);
         }
         fetchData();
-    }, []);
+    }, [match.params.id]);
     const deleteHandler = async () => {
         let check = window.confirm("정말 삭제하시겠습니까?");
         let response;
@@ -85,7 +85,7 @@ const Notice = ({ history }) => {
                     )}
                     <div className="noticeDetail-category-line"></div>
                     <div className="noticeDetail-button-Area">
-                        <Link to={`/notice/${getId()}/edit`}>
+                        <Link to={`/notice/${getId()}}/edit`}>
                             <button className="noticeDetail-register-btn">공지사항 수정</button>
                         </Link>
                         <button
