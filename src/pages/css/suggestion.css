@@ -271,3 +271,172 @@
     align-items: center;
     justify-content: center;
 }
+.suggestion-sort-button div {
+    margin-left: 30px;
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+    background: white;
+    align-items: center;
+    justify-content: center;
+}
+
+.mymodal {
+    z-index: 101;
+    position: fixed;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 80%;
+    border: 1px solid #ccc;
+    background: #fff;
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 40px;
+}
+
+.myoverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+    opacity: 0;
+}
+
+.suggestion-modal-header {
+    display: flex;
+    height: 120px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 20px;
+}
+.suggestion-modal-view {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+.suggestion-modal-view span {
+    transform: translateY(60%);
+}
+.suggestion-modal-header-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.suggestion-modal-header-left h4 {
+    font-size: 22px;
+    font-weight: 400;
+    font-family: AppleSDGothicNeoM00;
+}
+.suggestion-modal-title {
+    margin: 0;
+}
+
+.suggestion-modal-homepage {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: 120px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.suggestion-modal-info {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 3fr;
+    grid-template-rows: repeat(3);
+    gap: 20px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.suggestion-modal-img {
+    background: rosybrown;
+    margin: 20px 0 20px 0;
+    width: 100%;
+    height: 300px;
+}
+
+.suggestion-modal-buttonArea {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 30%;
+}
+
+.suggestion-modal-button {
+    font-size: 15px;
+    background: #02c1c6;
+    color: white;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    width: 180px;
+    height: 50px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.suggestion-modal-companyInfo-section {
+    display: flex;
+    padding-left: 20px;
+    margin-bottom: 100px;
+}
+.suggestion-modal-companyInfo-section h2 {
+    margin: 0 0 20px 0;
+}
+.suggestion-modal-logo {
+    background: rosybrown;
+    width: 200px;
+    height: 150px;
+}
+.suggestion-modal-companyInfo {
+    padding: 20px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 25px;
+}
+.suggestion-modal-info-grid {
+    width: 120%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
+    gap: 20px;
+    font-size: 15px;
+}
+.suggestion-modal-companyInfo-right-box {
+    margin-left: 40px;
+    position: relative;
+}
+
+.suggestion-modal-extra {
+    position: absolute;
+    color: rgba(0, 0, 0, 0.4);
+    bottom: -30%;
+    right: -30%;
+    font-size: 14px;
+}
