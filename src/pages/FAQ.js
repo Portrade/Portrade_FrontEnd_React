@@ -34,7 +34,6 @@ const FAQ = () => {
     };
 
     const handleClick = (e) => {
-        console.log(e);
         e.currentTarget.classList.toggle("faq-active");
     };
     return (
