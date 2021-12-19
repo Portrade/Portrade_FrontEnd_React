@@ -23,5 +23,5 @@
     },
     "prettier.printWidth": 240,
     // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
-    "editor.formatOnType": true,
+    "editor.formatOnType": true
 }

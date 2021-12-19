@@ -1,5 +1,4 @@
 .home-container {
-    width: 100%;
     text-align: center;
     margin-top: 60px;
 }
@@ -7,6 +6,7 @@
     width: 100%;
     height: 450px;
     opacity: 1;
+    overflow: hidden;
 }
 .home-carousel-box {
     box-sizing: border-box;
@@ -233,6 +233,7 @@
 
 .home-portfolio-content {
     margin-top: 134px;
+    width: 100%;
 }
 .home-portfolio-nav {
     font: normal normal normal 20px/38px AppleSDGothicNeoB00;
@@ -270,7 +271,7 @@
     margin-top: 100px;
 }
 .home-start-box .home-description {
-    color: #000000;
+    color: white;
     margin-bottom: 30px;
     font: normal normal normal 40px/55px AppleSDGothicNeoM00;
 }
@@ -343,4 +344,9 @@
 .home-container .slick-dots li button:before {
     color: #f3f3f3;
     opacity: 1;
+}
+.home-start-box {
+    background-image: url("../../images/home/main_bottom.jpeg");
+    background-size: cover;
+    background-position: center center;
 }

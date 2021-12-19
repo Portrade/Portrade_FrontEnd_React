@@ -1,8 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { noticeApi, faqApi } from "../_api";
+
 import "./css/help.css";
 
 const Help = () => {
+    const [noticeList, setNoticeList] = useState([]);
+    const [FAQList, setFAQList] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            let {
+                data: { notices },
+            } = await noticeApi.getList(1, "");
+            setNoticeList(notices);
+            let {
+                data: { faqs },
+            } = await faqApi.getList();
+            setFAQList(faqs);
+        }
+        fetchData();
+    }, []);
+
+    const NoticeComponent = () => (
+        <div className="help-notice-desc">
+            {noticeList.slice(0, 5).map((item, index) => (
+                <p key={index}>
+                    <Link to={`notice/${item.id}`}>{item.title}</Link>
+                </p>
+            ))}
+        </div>
+    );
+    const FAQComponent = () => (
+        <div className="help-notice-desc">
+            {FAQList.slice(0, 5).map((item, index) => (
+                <p key={index}>
+                    <Link to={`faq`}>{item.title}</Link>
+                </p>
+            ))}
+        </div>
+    );
+
     return (
         <div className="help-container">
             <p className="help-question-text">포트레이드에 궁금하신 점이 있으신가요?</p>
@@ -30,13 +68,7 @@ const Help = () => {
                             <Link to="/notice">더보기</Link>
                         </span>
                     </div>
-                    <div className="help-notice-desc">
-                        <p>포트레이트의 이용약관에 대해서 안내드립니다.</p>
-                        <p>포트레이트의 이용약관 개정에 대해서 안내드립니다.</p>
-                        <p>고객센터 운영 시간 안내</p>
-                        <p>포트레이트 서비스 런칭 안내</p>
-                        <p>포트레이트</p>
-                    </div>
+                    <NoticeComponent />
                 </div>
 
                 <div className="help-notice">
@@ -46,13 +78,7 @@ const Help = () => {
                             <Link to="/FAQ">더보기</Link>
                         </span>
                     </div>
-                    <div className="help-notice-desc">
-                        <p>포트폴리오 업로드는 어떻게 하나요?</p>
-                        <p>포트폴리오를 비공개로 전환하고 싶어요.</p>
-                        <p>포트폴리오를 암호화해서 공유하고 싶어요.</p>
-                        <p>게시물에서 개인 사이트 링크 연결은 어떻게 하나요?</p>
-                        <p>아이디 혹은 비밀번호를 잊었습니다.</p>
-                    </div>
+                    <FAQComponent />
                 </div>
             </div>
 
@@ -75,20 +101,20 @@ const Help = () => {
                 <p>서비스 소개</p>
                 <div className="help-service-content">
                     <div className="help-service">
-                        <div></div>
+                        <img alt="1" src={require("../images/help/slogan_1.png").default} />
+                        <p>포트폴리오 jpg 변환</p>
+                    </div>
+                    <div className="help-service">
+                        <img alt="1" src={require("../images/help/slogan_2.png").default} />
                         <p>포트폴리오 업로드</p>
                     </div>
                     <div className="help-service">
-                        <div></div>
-                        <p>포트폴리오 암호화</p>
-                    </div>
-                    <div className="help-service">
-                        <div></div>
+                        <img alt="1" src={require("../images/help/slogan_3.png").default} />
                         <p>외부 사이트 연동</p>
                     </div>
                     <div className="help-service">
-                        <div></div>
-                        <p>포트폴리오 업로드</p>
+                        <img alt="1" src={require("../images/help/slogan_4.png").default} />
+                        <p>포트폴리오 암호화</p>
                     </div>
                 </div>
             </div>
