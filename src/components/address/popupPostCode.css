@@ -1,0 +1,13 @@
+.popupPostCode-button-container {
+    display: flex;
+    gap: 5px;
+}
+.popupPostCode-button-container button {
+    background-color: white;
+    font: normal normal normal 15px/20px AppleSDGothicNeoR00;
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 33px;
+    margin-left: auto;
+    margin-top: 10px;
+}

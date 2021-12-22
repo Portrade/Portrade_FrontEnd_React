@@ -440,3 +440,18 @@
     right: -30%;
     font-size: 14px;
 }
+.suggestion-btn {
+    font: normal normal normal 15px/38px AppleSDGothicNeoR00;
+    background-color: white;
+    border: 1px solid #c9c9c9;
+    border-radius: 10px;
+    width: 80px;
+    height: 50px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.suggestion-btn:hover {
+    background: #22334d;
+    color: white;
+}

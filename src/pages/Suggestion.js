@@ -379,6 +379,9 @@ const Suggestion = () => {
                     ) : null}
                 </div>
             </div>
+            <button className="suggestion-btn">
+                <Link to="companies">기업 등록</Link>
+            </button>
         </div>
     );
 };
