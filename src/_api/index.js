@@ -49,3 +49,7 @@ export const faqApi = {
     getList: () => api.get("/api/v1/faqs?"),
     postFAQ: (title, content) => api.post("/api/v1/faqs", { title, content }),
 };
+
+export const companyApi = {
+    postCompany: (name, form, industry, sales, homepage, memberCount, address, ceo, foundingDate) => api.post("/api/v1/companies", { name, form, industry, sales, homepage, memberCount, address, ceo, foundingDate }),
+};

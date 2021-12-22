@@ -22,6 +22,7 @@ import {
     InquiryPost,
     InquiryDetail,
     InquiryAnswer,
+    CompanyPost,
 } from "./pages";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
@@ -63,6 +64,7 @@ const App = (props) => {
                 <Route exact path="/inquiry/:id/answer" component={InquiryAnswer} />
                 <Route exact path="/faq" component={FAQ} />
                 <Route exact path="/faq/post" component={FAQPost} />
+                <Route exact path="/companies" component={CompanyPost} />
                 <Route component={Error} />
             </Switch>
             {successPath && <Footer />}
