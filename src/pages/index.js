@@ -20,3 +20,4 @@ export { default as InquiryPost } from "./InquiryPost";
 export { default as InquiryDetail } from "./InquiryDetail";
 export { default as InquiryAnswer } from "./InquiryAnswer";
 export { default as CompanyPost } from "./CompanyPost";
+export { default as RecruitmentPost } from "./RecruitmentPost";

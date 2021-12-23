@@ -52,4 +52,9 @@ export const faqApi = {
 
 export const companyApi = {
     postCompany: (name, form, industry, sales, homepage, memberCount, address, ceo, foundingDate) => api.post("/api/v1/companies", { name, form, industry, sales, homepage, memberCount, address, ceo, foundingDate }),
+    getCompanyDetail: () => api.get("/api/v1/companies/2"),
+};
+
+export const recruitmentApi = {
+    postRecruitment: (companyId, title, career, education, workType, pay, address, category, logo) => api.post(`/api/v1/recruitments/${companyId}`, { title, career, education, workType, pay, address, category, logo }),
 };
