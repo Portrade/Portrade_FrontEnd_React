@@ -52,12 +52,11 @@ const Notice = ({ history }) => {
         if (name !== "" && form !== "" && industry !== "" && sales !== "" && homepage !== "" && memberCount !== "" && address !== "" && ceo !== "" && foundingDate !== "") {
             try {
                 response = await companyApi.postCompany(name, form, industry, sales, homepage, memberCount, address, ceo, foundingDate);
-                // if (response.status !== 201) throw new Error("201 status를 반환하지 않음");
-                console.log(response);
+                if (response.status !== 201) throw new Error("201 status를 반환하지 않음");
             } catch {
                 alert("정상적으로 처리되지 않았습니다.");
             } finally {
-                // history.push("/suggestion");
+                history.push("/suggestion");
             }
         } else {
             alert("모든 항목을 입력해야 합니다.");
@@ -113,7 +112,7 @@ const Notice = ({ history }) => {
                 </form>
                 <div className="companyPost-btn-section">
                     <button className="companyPost-btn" onClick={submitHandler}>
-                        문의하기
+                        등록
                     </button>
                 </div>
             </div>
