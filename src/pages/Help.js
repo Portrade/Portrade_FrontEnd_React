@@ -44,8 +44,6 @@ const Help = () => {
     return (
         <div className="help-container">
             <p className="help-question-text">포트레이드에 궁금하신 점이 있으신가요?</p>
-            <input className="help-question-box" type="text" placeholder="이 곳에 검색어를 입력하세요" />
-
             <div className="help-desc-container">
                 <div className="help-desc">
                     <p>회원 정보 관리</p>
@@ -111,10 +109,6 @@ const Help = () => {
                     <div className="help-service">
                         <img alt="1" src={require("../images/help/slogan_3.png").default} />
                         <p>외부 사이트 연동</p>
-                    </div>
-                    <div className="help-service">
-                        <img alt="1" src={require("../images/help/slogan_4.png").default} />
-                        <p>포트폴리오 암호화</p>
                     </div>
                 </div>
             </div>
