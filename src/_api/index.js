@@ -5,8 +5,9 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((req) => {
-    if (localStorage.getItem("webToken")) {
-        req.headers.authorization = `Bearer ${JSON.parse(localStorage.getItem("webToken")).accessToken}`;
+    if (sessionStorage.getItem("webToken")) {
+        req.headers.authorization = `Bearer ${JSON.parse(sessionStorage.getItem("webToken")).accessToken}`;
+        console.log(req);
     }
     return req;
 });
@@ -57,4 +58,19 @@ export const companyApi = {
 
 export const recruitmentApi = {
     postRecruitment: (companyId, title, career, education, workType, pay, address, category, logo) => api.post(`/api/v1/recruitments/${companyId}`, { title, career, education, workType, pay, address, category, logo }),
+};
+
+export const portfolioApi = {
+    registerPortfolio: (form) => {
+        console.log("registerAPI:", form);
+        api.post("/api/v1/portfolios", form);
+    },
+};
+
+export const myPageApi = {
+    getMyProfile: (userId) => api.get(`/api/v1/users/${userId}/profile`),
+    uploadProfileImage: (formData) => {
+        console.log("myPageAPI:", formData);
+        api.put("/api/v1/users/me/profile/image", formData)
+    },
 };

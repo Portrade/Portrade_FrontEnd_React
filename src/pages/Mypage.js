@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { InsertPortfolio, MyPortfolio} from "../components/mypage";
+import { InsertPortfolio, MyPortfolio } from "../components/mypage";
+import { myPageApi } from "../_api";
 import "./css/myPage.css";
 
 const Mypage = () => {
+    const [file, setFile] = useState("");
+    // const avatarImg = useSelector((state) => );
+    const [user, setUser] = useState([]);
+
+    const onChange = async (e) => {
+        const formData = new FormData();
+        formData.append('file', e.target.files[0]);
+        const response = await myPageApi.uploadProfileImage(formData); //->redux로
+        // console.log(response.data.profileImageUrl);
+        setFile(response?.data.profileImageUrl);
+
+        // const reader = new FileReader();
+        // reader.onload = async () => {
+        //     if (reader.readyState === 2) {
+        //         setFile(reader.result);
+        //         let response = await myPageApi.uploadProfileImage(file); //->redux로
+        //     }
+        // }
+        // reader.readAsDataURL(e.target.files[0]);
+    }
+
+    useEffect(async () => {
+        let user = await myPageApi.getMyProfile(sessionStorage.userId);
+        setUser(user.data); // user = user.data;
+        setFile(user.data.profileImageUrl);
+        console.log("user", user.data);
+    }, []);
+
     return (
         <div className="mypage-container">
             <p className="mypage-desc">여러분만의 개성을 넣어보세요. 헤더 최적 치수 1920 x 300</p>
@@ -13,11 +43,14 @@ const Mypage = () => {
                 <div className="mypage-profile-card">
                     <div className="mypage-profile-card-header">
                         <div className="mypage-avatar-container">
-                            <div className="mypage-add-story-icon"></div>
+                            {file ? <img src={file} alt="avatarImage" /> : null}
+                            <label for="mypage-avatar-upload">+</label>
+                            <input type="file" id="mypage-avatar-upload" accept="image/*" onChange={onChange} />
                         </div>
 
-                        <p className="mypage-user-name">홍길동</p>
-                        <p className="mypage-user-details">사용자 소속 및 구직 상태</p>
+                        <p className="mypage-user-name">{user.name}</p>
+                        <p className="mypage-user-details-tag">사용자 소속 및 구직 상태</p>
+                        <p className="mypage-user-details">{user.job}</p>
                     </div>
 
                     <p className="mypage-profile-button-label">내 프로필 편집</p>

@@ -30,7 +30,7 @@ import Footer from "./components/footer/Footer";
 import "./css/app.css";
 
 const App = (props) => {
-    const user = JSON.parse(localStorage.getItem("webToken"));
+    const user = JSON.parse(sessionStorage.getItem("webToken"));
     const [successPath, setsuccessPath] = useState(false);
 
     useEffect(() => {

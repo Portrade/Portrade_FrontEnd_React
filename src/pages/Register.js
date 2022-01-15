@@ -55,7 +55,7 @@ const Register = (props) => {
                                     * 영문 대소문자, 숫자, 특수문자를 3가지 이상으로
                                     조합하여 6자 이상 입력해 주세요
                                 </label>
-                            </div>
+                            </div> 
                         </div>
                         <fieldset className="register-fieldset">
                             <legend>비밀번호</legend>

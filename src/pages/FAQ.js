@@ -5,7 +5,7 @@ import { faqApi } from "../_api";
 
 const FAQ = () => {
     const [postBlockArr, setPostBlockArr] = useState([]);
-    const user = JSON.parse(localStorage.getItem("webToken"));
+    const user = JSON.parse(sessionStorage.getItem("webToken"));
 
     useEffect(() => {
         async function fetchData() {

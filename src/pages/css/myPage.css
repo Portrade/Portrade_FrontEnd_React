@@ -44,17 +44,38 @@
     margin-bottom: 30px;
     border-radius: 999px;
     background-color: #525252;
+    position: relative;
+}
+.mypage-avatar-container img {
+    /* object-fit: cover; */
+    height: 110px;
+    width: 110px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    border-radius: 999px;
+    /* background-color: #525252; */
 }
 
-.mypage-add-story-icon {
+.mypage-avatar-container label {
     border: 2px solid #e9e9e9;
     background: #0ac3c8;
     border-radius: 50%;
     cursor: pointer;
     height: 24px;
     width: 24px;
-    float: right;
-    margin-top: 82px;
+    /* float: right;
+    margin-top: 82px; */
+
+    position: absolute;
+    top: 80px;
+    left: 80px;
+    
+    color: #ffffff;
+    font: normal normal normal 20px/23px AppleSDGothicNeoB00;
+}
+
+.mypage-avatar-container input {
+    display: none;
 }
 
 .mypage-user-name {
@@ -62,6 +83,13 @@
     margin-bottom: 10px;
     height: 25px;
     font: normal normal normal 20px/25px AppleSDGothicNeoB00;
+}
+
+.mypage-user-details-tag {
+    margin: 0;
+    /* margin-bottom: 15px; */
+    font: normal normal normal 12px/15px AppleSDGothicNeoM00;
+    color: #525252;
 }
 
 .mypage-user-details {
