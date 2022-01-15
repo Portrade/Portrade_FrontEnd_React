@@ -11,10 +11,10 @@ export const logout = () => async (dispatch) => {
 
 export const login = (formData) => async (dispatch) => {
     try {
-        console.log(formData);
+        // console.log(formData.userId);
         const { data } = await axios.logIn(formData);
 
-        dispatch({ type: types.LOGIN_USER, data, isLogin: true });
+        dispatch({ type: types.LOGIN_USER, data: {data, userId: formData.userId}, isLogin: true });
 
         window.history.back(); //push("/");
     } catch (error) {

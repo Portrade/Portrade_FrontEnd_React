@@ -58,3 +58,26 @@ export const companyApi = {
 export const recruitmentApi = {
     postRecruitment: (companyId, title, career, education, workType, pay, address, category, logo) => api.post(`/api/v1/recruitments/${companyId}`, { title, career, education, workType, pay, address, category, logo }),
 };
+
+export const portfolioApi = {
+    registerPortfolio: (form) => {
+        console.log("registerAPI:");
+        for (let val of form.values()) {
+            console.log(val);
+        }
+
+        api.post("/api/v1/portfolios", form);
+    },
+};
+
+export const myPageApi = {
+    getMyProfile: (userId) => api.get(`/api/v1/users/${userId}/profile`),
+    uploadProfileImage: (formData) => {
+        // console.log("myPageAPI:");
+        // for (let val of formData.values()) {
+        //     console.log(val);
+        // }
+        
+        api.put("/api/v1/users/me/profile/image", formData)
+    },
+};

@@ -11,7 +11,7 @@ const Header = () => {
     const dispatch = useDispatch();
     const isLogin = useSelector((state) => state.login.isLogin);
     const sessionStoragetokenCheck =
-        localStorage.getItem("webToken"); // window.sessionStorage.getItem("access_token");
+        sessionStorage.getItem("webToken"); // window.sessionStorage.getItem("access_token");
     
     /*useEffect(() => {
         if (sessionStoragetokenCheck) {

@@ -36,7 +36,7 @@ const Footer = () => {
                 <nav className="footer-nav-bar">
                     <nav className="footer-nav-bar-col">
                         <Link to="/introduce" className="footer-nav-bar-col-title">포트레이드 소개</Link>
-                        <Link>마이페이지</Link>
+                        <Link to="/mypage">마이페이지</Link>
                         <Link>포트폴리오 관리</Link>
                     </nav>
                     <nav className="footer-nav-bar-col">
@@ -52,9 +52,9 @@ const Footer = () => {
                     </nav>
                     <nav className="footer-nav-bar-col">
                         <Link to="/help" className="footer-nav-bar-col-title footer-nav-bar-col-title-last">고객센터</Link>
-                        <Link>공지사항</Link>
-                        <Link>자주 묻는 질문</Link>
-                        <Link>1:1 문의</Link>
+                        <Link to="/notice">공지사항</Link>
+                        <Link to="/FAQ">자주 묻는 질문</Link>
+                        <Link to="/inquiry/post">1:1 문의</Link>
                     </nav>
                 </nav>
                 

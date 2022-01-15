@@ -7,7 +7,7 @@
 	flex-direction: row;
 	justify-content: center;
 	padding-bottom: 20px;
-	border-bottom: 0.5px solid #c2c2c2;
+	border-bottom: 0.5px solid #e0e0e0ee;
 	margin-bottom: 2em;
 }
 .portfolioModal-writeComment-profile {
@@ -27,6 +27,7 @@
 	font: normal normal normal 1rem/1.2rem AppleSDGothicNeoR00;
 	padding: 1em;
 	box-sizing: border-box;
+	border: solid 3px #e0e0e0ee;
 }
 .portfolioModal-submitButton {
 	width: 80px;
