@@ -32,6 +32,11 @@
     width: 80%;
 }
 
+.suggestion-auto-carousel-logo {
+    width: 80%;
+    height: 60%;
+}
+
 .suggestion-auto-carousel-title {
     width: 80%;
     font: normal normal normal 13px/20px AppleSDGothicNeoB00;
@@ -68,7 +73,7 @@
 
 .suggestion-auto-carousel-box {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    height: 200px;
+    height: 250px;
 }
 .suggestion-auto-carousel-box:hover {
     box-shadow: #53bfc2 0px 3px 8px;
@@ -77,7 +82,7 @@
     transform: translateX(10px);
 }
 
-.suggestion-arrow-carousel-container {
+/* .suggestion-arrow-carousel-container {
     width: 100%;
 }
 
@@ -101,8 +106,6 @@
     transform: translateX(15px);
 }
 .suggestion-arrow-carousel-logo {
-    color: green;
-    font-size: 30px;
     margin: 20px 0 20px 0;
 }
 .suggestion-arrow-carousel-title {
@@ -122,7 +125,7 @@
 }
 .suggestion-arrow-carousel-date {
     line-height: 40px;
-}
+} */
 
 .suggestion-sort-container {
     width: 100%;

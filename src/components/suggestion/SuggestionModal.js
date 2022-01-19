@@ -13,19 +13,21 @@ const SuggestionModal = ({ modalOpen, modalHandler, modalIndex, setModalDeleteCh
             } = await recruitmentApi.getRecruitmentDetail(modalIndex);
             setCompanyData(company);
             setRecruitmentData(recruitment);
+            console.log(recruitmentData);
         }
+
         fetchData();
     }, [modalIndex]);
 
     const deleteHandler = (id) => {
         async function deleteRecruitment() {
             try {
-                const response = await recruitmentApi.deleteRecruitment(id);
+                await recruitmentApi.deleteRecruitment(id);
             } catch {
                 alert("정상적으로 처리되지 않았습니다.");
             } finally {
                 modalHandler();
-                setModalDeleteCheck(true);
+                setModalDeleteCheck(!modalOpen);
                 alert("삭제 되었습니다.");
             }
         }
@@ -64,7 +66,7 @@ const SuggestionModal = ({ modalOpen, modalHandler, modalIndex, setModalDeleteCh
                     <span>직종</span>
                     <span>{recruitmentData.category}</span>
                 </div>
-                <div className="suggestion-modal-img"></div>
+                <img className="suggestion-modal-img" src={recruitmentData.url}></img>
                 <div className="suggestion-modal-buttonArea">
                     <button className="suggestion-modal-button">
                         <a href={companyData.homepage} target="_blank" rel="noreferrer">
@@ -99,7 +101,9 @@ const SuggestionModal = ({ modalOpen, modalHandler, modalIndex, setModalDeleteCh
                         <div className="suggestion-modal-extra">*항목은 본사 정보와 다를 수 있습니다</div>
                     </div>
                 </div>
-                <button onClick={() => deleteHandler(modalIndex)}>공고 삭제</button>
+                <button className="suggestion-modal-deleteBtn" onClick={() => deleteHandler(modalIndex)}>
+                    공고 삭제
+                </button>
             </div>
         </div>
     ) : null;

@@ -205,29 +205,37 @@ const Suggestion = () => {
             <div className="suggestion-auto-carousel-box" key={index} onClick={(e) => openModalHandler(e, item.id)}>
                 <img className="suggestion-auto-carousel-logo" src={item.logo} alt="logo"></img>
                 <div className="suggestion-auto-carousel-title">{item.title}</div>
-                <div className="suggestion-auto-carousel-company">{item.company}</div>
+                <div className="suggestion-auto-carousel-company">{item.companyName}</div>
                 <div className="suggestion-auto-carousel-detail">
                     <span>{item.career}</span>
                     <span>{item.education}</span>
-                    <span>{item.location}</span>
+                    <span>{item.address ? item.address.substr(0, 6) + "..." : ""}</span>
                 </div>
             </div>
         </>
     ));
 
-    const arrowCaruosel = autoCarouselData.map((item, index) => (
-        <div className="suggestion-arrow-carousel-box" key={index}>
-            <img className="suggestion-arrow-carousel-logo" src={item.logo}></img>
-            <div className="suggestion-arrow-carousel-title">{item.title}</div>
-            <div className="suggestion-arrow-carousel-company">{item.company}</div>
-            <div className="suggestion-arrow-carousel-detail">
-                <span>{item.career}</span>
-                <span>{item.education}</span>
-                <span>{item.location}</span>
-            </div>
-            {/* <div className="suggestion-arrow-carousel-date">{`${item.date.substr(0, 13)}시`}</div> */}
-        </div>
-    ));
+    // const arrowCaruosel = autoCarouselData.map((item, index) => (
+    //     <div className="suggestion-arrow-carousel-box" key={index}>
+    //         <img
+    //             className="suggestion-arrow-carousel-logo"
+    //             alt="logo"
+    //             src={item.logo}
+    //             onError={({ currentTarget }) => {
+    //                 currentTarget.onerror = null; // prevents looping
+    //                 currentTarget.src = "../images/suggestion.noImg.jpeg";
+    //             }}
+    //         ></img>
+    //         <div className="suggestion-arrow-carousel-title">{item.title}</div>
+    //         <div className="suggestion-arrow-carousel-company">{item.companyName}</div>
+    //         <div className="suggestion-arrow-carousel-detail">
+    //             <span>{item.career}</span>
+    //             <span>{item.education}</span>
+    //             <span>{item.location ? item.location.substr(0, 2) + "..." : ""}</span>
+    //         </div>
+    //         <div className="suggestion-arrow-carousel-date">{`${item.date ? item.date.substr(0, 13) + "시" : ""}`}</div>
+    //     </div>
+    // ));
 
     return (
         <div className={`suggestion-box  ${openModal ? "suggestion-bg" : null}`}>
@@ -240,10 +248,10 @@ const Suggestion = () => {
                 <Slider {...autoCarouselSetting}>{autoCaruosel}</Slider>
                 <SuggestionModal modalOpen={openModal} modalIndex={modalIndex} modalHandler={openModalHandler} setModalDeleteCheck={setModalDeleteHandler} />
             </div>
-            <div className="suggestion-arrow-carousel-container">
+            {/* <div className="suggestion-arrow-carousel-container">
                 <h2 className="suggestion-subTitle">추천 기업 공고</h2>
                 <Slider {...arrowCarouselSetting}>{arrowCaruosel}</Slider>
-            </div>
+            </div> */}
             <div className="suggestion-sort-container">
                 <h2 className="suggestion-subTitle">정렬 기준</h2>
                 <div className="suggestion-input-container">
