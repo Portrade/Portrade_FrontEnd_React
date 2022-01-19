@@ -24,7 +24,7 @@ const props = {
 }
 const comments = props.comments;
 
-const CommentSection = ({ id }) => {
+const CommentSection = ({ id, commentCount }) => {
 	// const user = JSON.parse(localStorage.getItem('webToken'));
 	// const [comments, setComments] = useSelector((state) => state.comments);
 	const dispatch = useDispatch();
@@ -43,7 +43,7 @@ const CommentSection = ({ id }) => {
 
 	return (
 		<div className="portfolioModal-portfolioComment-content">
-
+			<h3>댓글 {commentCount}개</h3>
 			<div className="portfolioModal-writeComment">
 				<div className="portfolioModal-writeComment-profile"></div>
 				<div className="portfolioModal-writeInput">

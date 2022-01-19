@@ -8,8 +8,10 @@ const loginReducer = (state = { authData: null, isLogin: false }, action) => {
     switch(action.type){
         case types.LOGIN_USER: // { type: types.LOGIN_USER, isLogin: true }
             console.log("------LOGIN-----");
-            
-            localStorage.setItem('webToken', JSON.stringify({ ...action?.data }));
+            console.log(action?.data);
+
+            sessionStorage.setItem('webToken', JSON.stringify({ ...action?.data.data }));
+            sessionStorage.setItem('userId', action?.data.userId);
 
             return state = {
                 ...state,
@@ -19,7 +21,7 @@ const loginReducer = (state = { authData: null, isLogin: false }, action) => {
         case types.LOGOUT_USER:
             console.log("-----LOGOUT-----");
 
-            localStorage.clear();
+            sessionStorage.clear();
 
             return state = {
                 ...state,

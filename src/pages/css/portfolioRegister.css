@@ -29,6 +29,48 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+.portfolioRegister-add > img {
+    width: 100%;
+}
+.portfolioRegister-add-reupload-hover {
+    display: none;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+}
+.portfolioRegister-add-reupload {
+    position: absolute;
+    color: #ffffff;
+    font: normal normal normal 2rem/1rem AppleSDGothicNeoB00;
+    align-items: center;
+}
+.portfolioRegister-add-reupload-caption {
+    font: normal normal normal 1rem AppleSDGothicNeoM00;
+    margin-bottom: 1em;
+    display: none;
+}
+.portfolioRegister-add-reupload-button {
+    padding: 30px;
+    border-radius: 50px;
+    background-color: #487498;
+    color: #ffffff;
+    margin: auto;
+    display: none;
+    cursor: pointer;
+}
+
+.portfolioRegister-add:hover > .portfolioRegister-add-reupload,
+.portfolioRegister-add:hover > .portfolioRegister-add-reupload-hover,
+.portfolioRegister-add:hover .portfolioRegister-add-reupload-caption,
+.portfolioRegister-add:hover .portfolioRegister-add-reupload-button {
+    display: table;
+    /* transition: opacity 2s; */
+}
+.portfolioRegister-add input {
+    display: none;
 }
 
 .portfolioRegister-add p {
@@ -57,16 +99,17 @@
     margin-bottom: 10px;
 }
 
-.portfolioRegister-img button {
-    outline: none;
-    width: 80px;
-    height: 80px;
-    color: #ffffff;
-    font: normal normal normal 30px/85px AppleSDGothicNeoM00;
-    border: none;
-    border-radius: 999px;
+.portfolioRegister-image-upload {
+    padding: 30px;
+    border-radius: 50px;
     background-color: #487498;
+    font: normal normal normal 2rem/1.2rem AppleSDGothicNeoM00;
+    color: #ffffff;
     cursor: pointer;
+}
+
+.portfolioRegister-img > input {
+    display: none;
 }
 
 .portfolioRegister-options {
@@ -134,6 +177,9 @@
     outline: none;
     border: none;
     display: block;
+}
+.portfolioRegister-btn {
+    font: normal normal normal 1rem/2.5rem AppleSDGothicNeoM00;
 }
 
 .options-btn {
