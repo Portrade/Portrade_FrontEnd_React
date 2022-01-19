@@ -2,6 +2,9 @@
     width: 80%;
 }
 
+.suggestion-bg {
+}
+
 .suggestion-header p {
     font: normal normal normal 15px/38px AppleSDGothicNeoB00;
     margin: 0;
@@ -30,10 +33,8 @@
 }
 
 .suggestion-auto-carousel-logo {
-    color: green;
-    text-align: center;
-    font-size: 30px;
-    margin: 20px 0 20px 0;
+    width: 80%;
+    height: 60%;
 }
 
 .suggestion-auto-carousel-title {
@@ -72,7 +73,7 @@
 
 .suggestion-auto-carousel-box {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    height: 200px;
+    height: 250px;
 }
 .suggestion-auto-carousel-box:hover {
     box-shadow: #53bfc2 0px 3px 8px;
@@ -81,7 +82,7 @@
     transform: translateX(10px);
 }
 
-.suggestion-arrow-carousel-container {
+/* .suggestion-arrow-carousel-container {
     width: 100%;
 }
 
@@ -105,8 +106,6 @@
     transform: translateX(15px);
 }
 .suggestion-arrow-carousel-logo {
-    color: green;
-    font-size: 30px;
     margin: 20px 0 20px 0;
 }
 .suggestion-arrow-carousel-title {
@@ -126,7 +125,7 @@
 }
 .suggestion-arrow-carousel-date {
     line-height: 40px;
-}
+} */
 
 .suggestion-sort-container {
     width: 100%;
@@ -322,124 +321,6 @@
     opacity: 0;
 }
 
-.suggestion-modal-header {
-    display: flex;
-    height: 120px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    padding-bottom: 20px;
-}
-.suggestion-modal-view {
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    width: 70px;
-    height: 70px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-left: auto;
-}
-.suggestion-modal-view span {
-    transform: translateY(60%);
-}
-.suggestion-modal-header-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.suggestion-modal-header-left h4 {
-    font-size: 22px;
-    font-weight: 400;
-    font-family: AppleSDGothicNeoM00;
-}
-.suggestion-modal-title {
-    margin: 0;
-}
-
-.suggestion-modal-homepage {
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    width: 120px;
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 50px;
-}
-
-.suggestion-modal-info {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr 3fr;
-    grid-template-rows: repeat(3);
-    gap: 20px;
-    padding: 20px 0 20px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.suggestion-modal-img {
-    background: rosybrown;
-    margin: 20px 0 20px 0;
-    width: 100%;
-    height: 300px;
-}
-
-.suggestion-modal-buttonArea {
-    display: flex;
-    justify-content: space-between;
-    margin: 40px 30%;
-}
-
-.suggestion-modal-button {
-    font-size: 15px;
-    background: #02c1c6;
-    color: white;
-    border-radius: 50px;
-    outline: none;
-    border: none;
-    width: 180px;
-    height: 50px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.suggestion-modal-companyInfo-section {
-    display: flex;
-    padding-left: 20px;
-    margin-bottom: 100px;
-}
-.suggestion-modal-companyInfo-section h2 {
-    margin: 0 0 20px 0;
-}
-.suggestion-modal-logo {
-    background: rosybrown;
-    width: 200px;
-    height: 150px;
-}
-.suggestion-modal-companyInfo {
-    padding: 20px 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
-    font-size: 25px;
-}
-.suggestion-modal-info-grid {
-    width: 120%;
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr 2fr;
-    gap: 20px;
-    font-size: 15px;
-}
-.suggestion-modal-companyInfo-right-box {
-    margin-left: 40px;
-    position: relative;
-}
-
-.suggestion-modal-extra {
-    position: absolute;
-    color: rgba(0, 0, 0, 0.4);
-    bottom: -30%;
-    right: -30%;
-    font-size: 14px;
-}
 .suggestion-btn {
     font: normal normal normal 15px/38px AppleSDGothicNeoR00;
     background-color: white;

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./css/suggestion.css";
 import Slider from "react-slick";
-import Modal from "react-modal";
 import { Link } from "react-router-dom";
+import { recruitmentApi } from "../_api";
+import SuggestionModal from "../components/suggestion/SuggestionModal";
 
 const Suggestion = () => {
     const autoCarouselSetting = {
@@ -149,7 +150,23 @@ const Suggestion = () => {
     const [jobSelectOpen, setJobSelectOpen] = useState(false);
     const [sido, setSiDo] = useState("시/도 선택");
     const [job, setJob] = useState("");
-    const [modalOpen, setModalOpen] = useState([0, 0, 0, 0]);
+    const [openModal, setOpenModal] = useState(false);
+    const [modalIndex, setModalIndex] = useState(0);
+    const [autoCarouselData, setAutoCaruoselData] = useState([]);
+    const [modalDeleteCheck, setModalDeleteCheck] = useState(false);
+    useEffect(() => {
+        async function fetchData() {
+            const {
+                data: {
+                    recruitments,
+                    page: { totalElement },
+                },
+            } = await recruitmentApi.getRecruitment();
+            setAutoCaruoselData(new Array(totalElement).fill(0));
+            setAutoCaruoselData(recruitments);
+        }
+        fetchData();
+    }, [modalDeleteCheck]);
 
     const searchInputHandler = ({ target: { value } }) => {
         setInpuVal(value);
@@ -174,144 +191,54 @@ const Suggestion = () => {
         target.removeChild(target.querySelector("span"));
     };
 
-    const modalOpenHandler = (e, index) => {
-        let arr = [0, 0, 0, 0];
-        arr[index] = 1;
-        setModalOpen(arr);
+    const openModalHandler = (e, index) => {
+        setOpenModal(!openModal);
+        setModalIndex(index);
     };
 
-    const [autoCarouselData, setAutoCaruoselData] = useState([
-        {
-            logo: "Naver1",
-            title: "2021년 IT엔지니어/Technical Writer 체험형 인턴십",
-            company: "네이버클라우드(주)",
-            career: "신입",
-            education: "대졸 이상",
-            location: "서울/경기",
-            date: "2021-09-10 23:08:06",
-        },
-        {
-            logo: "Naver2",
-            title: "2021년 IT엔지니어/Technical Writer 체험형 인턴십",
-            company: "네이버클라우드(주)",
-            career: "신입",
-            education: "대졸 이상",
-            location: "서울/경기",
-            date: "2021-09-10 23:08:06",
-        },
-        {
-            logo: "Naver3",
-            title: "2021년 IT엔지니어/Technical Writer 체험형 인턴십",
-            company: "네이버클라우드(주)",
-            career: "신입",
-            education: "대졸 이상",
-            location: "서울/경기",
-            date: "2021-09-10 23:08:06",
-        },
-        {
-            logo: "Naver4",
-            title: "2021년 IT엔지니어/Technical Writer 체험형 인턴십",
-            company: "네이버클라우드(주)",
-            career: "신입",
-            education: "대졸 이상",
-            location: "서울/경기",
-            date: "2021-09-10 23:08:06",
-        },
-    ]);
+    const setModalDeleteHandler = () => {
+        setModalDeleteCheck(!modalDeleteCheck);
+    };
 
     const autoCaruosel = autoCarouselData.map((item, index) => (
-        <div className="suggestion-auto-carousel-box" key={index} onClick={(e) => modalOpenHandler(e, index)}>
-            <Modal isOpen={modalOpen[index]} onRequestClose={() => setModalOpen([0, 0, 0, 0])} contentLabel="My dialog" className="mymodal" overlayClassName="myoverlay" closeTimeoutMS={500}>
-                <div className="suggestion-modal-header">
-                    <div className="suggestion-modal-header-left">
-                        <h4 className="suggestion-modal-title">기업 공고 제목</h4>
-                        <h4 className="suggestion-modal-title">(주) 기업 이름</h4>
-                        <span className="suggestion-modal-title">업로드 날짜 (2021-01-01)</span>
-                    </div>
-
-                    <div className="suggestion-modal-view">
-                        <span>0</span>
-                        <span>조회수</span>
-                    </div>
-                    <a className="suggestion-modal-homepage" href="http://www.naver.com" target="_blank" rel="noreferrer">
-                        홈페이지 지원
-                    </a>
+        <>
+            <div className="suggestion-auto-carousel-box" key={index} onClick={(e) => openModalHandler(e, item.id)}>
+                <img className="suggestion-auto-carousel-logo" src={item.logo} alt="logo"></img>
+                <div className="suggestion-auto-carousel-title">{item.title}</div>
+                <div className="suggestion-auto-carousel-company">{item.companyName}</div>
+                <div className="suggestion-auto-carousel-detail">
+                    <span>{item.career}</span>
+                    <span>{item.education}</span>
+                    <span>{item.address ? item.address.substr(0, 6) + "..." : ""}</span>
                 </div>
-                <div className="suggestion-modal-info">
-                    <span>경력</span>
-                    <span>신입 / 경력</span>
-                    <span>급여</span>
-                    <span>회사내규에 따름</span>
-                    <span>학력</span>
-                    <span>대졸(4년제) 이상</span>
-                    <span>근무</span>
-                    <span>서울 강남구 테헤란로 142 12층</span>
-                    <span>근무 형태</span>
-                    <span>정규직,인턴직</span>
-                </div>
-                <div className="suggestion-modal-img"></div>
-                <div className="suggestion-modal-buttonArea">
-                    <button className="suggestion-modal-button">
-                        <a href="http://www.naver.com" target="_blank" rel="noreferrer">
-                            홈페이지로 이동
-                        </a>
-                    </button>
-                    <button className="suggestion-modal-button">저장하기</button>
-                </div>
-                <h3 className="suggestion-modal-companyInfo">기업 정보</h3>
-                <div className="suggestion-modal-companyInfo-section">
-                    <div className="suggestion-modal-logo"></div>
-                    <div className="suggestion-modal-companyInfo-right-box">
-                        <h2>(주) 기업 이름</h2>
-                        <div className="suggestion-modal-info-grid">
-                            <div>기업 형태</div>
-                            <div>스타트업, 외부감사법인</div>
-                            <div>사원수*</div>
-                            <div>7171명 (2020년기준)</div>
-                            <div>업종</div>
-                            <div>금융 지원 서비스업</div>
-                            <div>설립일*</div>
-                            <div>2013년 4월 23일</div>
-                            <div>매출액*</div>
-                            <div>1,187억 2097만원(2020년 기준)</div>
-                            <div>대표자명*</div>
-                            <div>이승건</div>
-                            <div>홈페이지</div>
-                            <div>홈페이지 주소</div>
-                            <div>기업주소</div>
-                            <div>서울 강남구 테헤란로 142, 12층</div>
-                        </div>
-                        <div className="suggestion-modal-extra">*항목은 본사 정보와 다를 수 있습니다</div>
-                    </div>
-                </div>
-            </Modal>
-            <div className="suggestion-auto-carousel-logo">{item.logo}</div>
-            <div className="suggestion-auto-carousel-title">{item.title}</div>
-            <div className="suggestion-auto-carousel-company">{item.company}</div>
-            <div className="suggestion-auto-carousel-detail">
-                <span>{item.career}</span>
-                <span>{item.education}</span>
-                <span>{item.location}</span>
             </div>
-        </div>
+        </>
     ));
 
-    const arrowCaruosel = autoCarouselData.map((item, index) => (
-        <div className="suggestion-arrow-carousel-box" key={index}>
-            <div className="suggestion-arrow-carousel-logo">{item.logo}</div>
-            <div className="suggestion-arrow-carousel-title">{item.title}</div>
-            <div className="suggestion-arrow-carousel-company">{item.company}</div>
-            <div className="suggestion-arrow-carousel-detail">
-                <span>{item.career}</span>
-                <span>{item.education}</span>
-                <span>{item.location}</span>
-            </div>
-            <div className="suggestion-arrow-carousel-date">{`${item.date.substr(0, 13)}시`}</div>
-        </div>
-    ));
+    // const arrowCaruosel = autoCarouselData.map((item, index) => (
+    //     <div className="suggestion-arrow-carousel-box" key={index}>
+    //         <img
+    //             className="suggestion-arrow-carousel-logo"
+    //             alt="logo"
+    //             src={item.logo}
+    //             onError={({ currentTarget }) => {
+    //                 currentTarget.onerror = null; // prevents looping
+    //                 currentTarget.src = "../images/suggestion.noImg.jpeg";
+    //             }}
+    //         ></img>
+    //         <div className="suggestion-arrow-carousel-title">{item.title}</div>
+    //         <div className="suggestion-arrow-carousel-company">{item.companyName}</div>
+    //         <div className="suggestion-arrow-carousel-detail">
+    //             <span>{item.career}</span>
+    //             <span>{item.education}</span>
+    //             <span>{item.location ? item.location.substr(0, 2) + "..." : ""}</span>
+    //         </div>
+    //         <div className="suggestion-arrow-carousel-date">{`${item.date ? item.date.substr(0, 13) + "시" : ""}`}</div>
+    //     </div>
+    // ));
 
     return (
-        <div className="suggestion-box">
+        <div className={`suggestion-box  ${openModal ? "suggestion-bg" : null}`}>
             <div className="suggestion-header">
                 <p>추천 기업입니다.</p>
                 <p>취업의 기회를 여러분에게 전달해 드립니다.</p>
@@ -319,11 +246,12 @@ const Suggestion = () => {
             </div>
             <div className="suggestion-auto-carousel-container">
                 <Slider {...autoCarouselSetting}>{autoCaruosel}</Slider>
+                <SuggestionModal modalOpen={openModal} modalIndex={modalIndex} modalHandler={openModalHandler} setModalDeleteCheck={setModalDeleteHandler} />
             </div>
-            <div className="suggestion-arrow-carousel-container">
+            {/* <div className="suggestion-arrow-carousel-container">
                 <h2 className="suggestion-subTitle">추천 기업 공고</h2>
                 <Slider {...arrowCarouselSetting}>{arrowCaruosel}</Slider>
-            </div>
+            </div> */}
             <div className="suggestion-sort-container">
                 <h2 className="suggestion-subTitle">정렬 기준</h2>
                 <div className="suggestion-input-container">

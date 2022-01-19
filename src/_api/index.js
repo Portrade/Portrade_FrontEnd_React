@@ -53,10 +53,23 @@ export const faqApi = {
 export const companyApi = {
     postCompany: (name, form, industry, sales, homepage, memberCount, address, ceo, foundingDate) => api.post("/api/v1/companies", { name, form, industry, sales, homepage, memberCount, address, ceo, foundingDate }),
     getCompanyDetail: () => api.get("/api/v1/companies/2"),
+    getCompanyList: (name) => api.get("/api/v1/companies", { params: { name } }),
 };
 
 export const recruitmentApi = {
-    postRecruitment: (companyId, title, career, education, workType, pay, address, category, logo) => api.post(`/api/v1/recruitments/${companyId}`, { title, career, education, workType, pay, address, category, logo }),
+    postRecruitment: (companyId, title, career, education, workType, pay, address, category, logo, url) => api.post(`/api/v1/recruitments/${companyId}`, { title, career, education, workType, pay, address, category, logo, url }),
+    getRecruitment: (page, size, area, job, title) =>
+        api.get("/api/v1/recruitments", {
+            params: {
+                page,
+                size,
+                area,
+                job,
+                title,
+            },
+        }),
+    getRecruitmentDetail: (id) => api.get(`/api/v1/recruitments/${id}`),
+    deleteRecruitment: (id) => api.delete(`/api/v1/recruitments/${id}`),
 };
 
 export const portfolioApi = {

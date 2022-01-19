@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "./css/noticePost.css";
 import "react-quill/dist/quill.snow.css";
-import { noticeApi } from "../_api";
+import { companyApi, noticeApi } from "../_api";
 
 const Notice = ({ history }) => {
     const modules = {
@@ -34,6 +34,16 @@ const Notice = ({ history }) => {
         "color",
         "background",
     ];
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const companyList = await companyApi.getCompanyList();
+            console.log(companyList);
+        };
+        fetchData();
+    }, []);
+    const [companyList, setCompanyList] = useState([]);
+
     const [desc, setDesc] = useState("");
     const [title, setTitle] = useState("");
     const onChangeTitle = (e) => {
