@@ -28,7 +28,7 @@ Portfolio와 Trade의 합성어로 다양한 분야의 포트폴리오를 업로
 
 -   사용자 관리
     -   회원가입 및 로그인, 로그아웃
-    -   localStorage 를 사용해 유저별 token 발급 및 로그인 유지
+    -   sessionStorage 를 사용해 유저별 token 발급 및 로그인 유지
 -   기업 및 공고 등록
     -   기업 등록 후 기업별 공고 등록, 조회수 및 마이페이지에 저장
 -   CRUD

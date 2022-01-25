@@ -5,8 +5,8 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((req) => {
-    if (localStorage.getItem("webToken")) {
-        req.headers.authorization = `Bearer ${JSON.parse(localStorage.getItem("webToken")).accessToken}`;
+    if (sessionStorage.getItem("webToken")) {
+        req.headers.authorization = `Bearer ${JSON.parse(sessionStorage.getItem("webToken")).accessToken}`;
     }
     return req;
 });
