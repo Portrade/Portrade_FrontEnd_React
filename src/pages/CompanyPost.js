@@ -56,7 +56,7 @@ const Notice = ({ history }) => {
             } catch {
                 alert("정상적으로 처리되지 않았습니다.");
             } finally {
-                history.push("/suggestion");
+                // history.push("/suggestion");
             }
         } else {
             alert("모든 항목을 입력해야 합니다.");
