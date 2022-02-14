@@ -58,12 +58,14 @@ export const companyApi = {
 
 export const recruitmentApi = {
     postRecruitment: (companyId, title, career, education, workType, pay, address, category, logo, url) => api.post(`/api/v1/recruitments/${companyId}`, { title, career, education, workType, pay, address, category, logo, url }),
-    getRecruitment: (area, job, title) =>
+    getRecruitment: (area, job, title, page = 1, size = 100) =>
         api.get("/api/v1/recruitments", {
             params: {
                 area,
                 job,
                 title,
+                page,
+                size,
             },
         }),
     getRecruitmentDetail: (id) => api.get(`/api/v1/recruitments/${id}`),

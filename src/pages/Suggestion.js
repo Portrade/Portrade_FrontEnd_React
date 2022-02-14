@@ -9,14 +9,14 @@ const Suggestion = () => {
     const autoCarouselSetting = {
         infinite: true,
         slidesToShow: 3,
-        speed: 1000,
+        speed: 3000,
         autoplay: true,
         autoplaySpeed: 6500,
     };
 
-    const siDoData = ["시/도 선택", "서울특별시", "인천광역시", "대전광역시", "광주광역시", "대구광역시", "울산광역시", "부산광역시", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주도"];
+    const siDoData = ["시/도 선택", "서울", "인천", "대전", "광주", "대구", "울산", "부산", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주도"];
     const areaData = {
-        서울특별시: [
+        서울: [
             "강남구",
             "강동구",
             "강북구",
@@ -43,12 +43,12 @@ const Suggestion = () => {
             "중구",
             "중랑구",
         ],
-        인천광역시: ["계양구", "남구", "남동구", "동구", "부평구", "서구", "연수구", "중구", "강화군", "옹진군"],
-        대전광역시: ["대덕구", "동구", "서구", "유성구", "중구"],
-        광주광역시: ["광산구", "남구", "동구", "북구", "서구"],
-        대구광역시: ["남구", "달서구", "동구", "북구", "서구", "수성구", "중구", "달성군"],
-        울산광역시: ["남구", "동구", "북구", "중구", "울주군"],
-        부산광역시: ["강서구", "금정구", "남구", "동구", "동래구", "부산진구", "북구", "사상구", "사하구", "서구", "수영구", "연제구", "영도구", "중구", "해운대구", "기장군"],
+        인천: ["계양구", "남구", "남동구", "동구", "부평구", "서구", "연수구", "중구", "강화군", "옹진군"],
+        대전: ["대덕구", "동구", "서구", "유성구", "중구"],
+        광주: ["광산구", "남구", "동구", "북구", "서구"],
+        대구: ["남구", "달서구", "동구", "북구", "서구", "수성구", "중구", "달성군"],
+        울산: ["남구", "동구", "북구", "중구", "울주군"],
+        부산: ["강서구", "금정구", "남구", "동구", "동래구", "부산진구", "북구", "사상구", "사하구", "서구", "수영구", "연제구", "영도구", "중구", "해운대구", "기장군"],
         경기도: [
             "고양시",
             "과천시",
@@ -143,11 +143,12 @@ const Suggestion = () => {
     const [jobSelectOpen, setJobSelectOpen] = useState(false);
     const [sido, setSiDo] = useState("시/도 선택");
     const [city, setCity] = useState("");
-    const [job, setJob] = useState("");
+    const [job, setJob] = useState("신입");
     const [openModal, setOpenModal] = useState(false);
     const [modalIndex, setModalIndex] = useState(0);
     const [autoCarouselData, setAutoCaruoselData] = useState([]);
     const [modalDeleteCheck, setModalDeleteCheck] = useState(false);
+    const [searchData, setSearchData] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
@@ -235,8 +236,13 @@ const Suggestion = () => {
         if (sido === "시/도 선택") area = "";
         else area = sido + " " + city;
         try {
-            response = await recruitmentApi.getRecruitment(area, job, title);
-            console.log(response);
+            const {
+                data: { recruitments },
+                data,
+            } = await recruitmentApi.getRecruitment(area, job, title);
+            console.log(data);
+            console.log(recruitments);
+            setSearchData(recruitments);
         } catch {
             alert("조회가 처리되지 않았습니다.");
         } finally {
@@ -316,6 +322,22 @@ const Suggestion = () => {
                             </ul>
                         </div>
                     ) : null}
+                </div>
+                <div>
+                    {searchData !== []
+                        ? searchData.map((item, index) => (
+                              <div className="suggestion-auto-carousel-box" key={index} onClick={(e) => openModalHandler(e, item.id)}>
+                                  <img className="suggestion-auto-carousel-logo" src={item.logo} alt="logo"></img>
+                                  <div className="suggestion-auto-carousel-title">{item.title}</div>
+                                  <div className="suggestion-auto-carousel-company">{item.companyName}</div>
+                                  <div className="suggestion-auto-carousel-detail">
+                                      <span>{item.career}</span>
+                                      <span>{item.education}</span>
+                                      <span>{item.address ? item.address.substr(0, 6) + "..." : ""}</span>
+                                  </div>
+                              </div>
+                          ))
+                        : null}
                 </div>
             </div>
             <button className="suggestion-btn">
