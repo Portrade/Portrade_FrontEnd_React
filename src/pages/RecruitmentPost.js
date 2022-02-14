@@ -46,6 +46,7 @@ const Notice = ({ history }) => {
                 data: { companies },
             } = await companyApi.getCompanyList();
             setCompanyList(companies);
+            console.log(companies);
         };
         fetchData();
     }, []);

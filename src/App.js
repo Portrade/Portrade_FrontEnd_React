@@ -60,13 +60,13 @@ const App = (props) => {
                 <Route exact path="/notice/:id" component={NoticeDetail} />
                 <Route exact path="/notice/:id/edit" component={() => (user ? <NoticeEdit /> : <Redirect to="/login" />)} />
                 <Route exact path="/inquiry" component={Inquiry} />
-                <Route exact path="/inquiry/post" component={InquiryPost} />
+                <Route exact path="/inquiry/post" component={() => (user ? <InquiryPost /> : <Redirect to="/login" />)} />
                 <Route exact path="/inquiry/:id" component={InquiryDetail} />
                 <Route exact path="/inquiry/:id/answer" component={InquiryAnswer} />
                 <Route exact path="/faq" component={FAQ} />
-                <Route exact path="/faq/post" component={FAQPost} />
-                <Route exact path="/company" component={CompanyPost} />
-                <Route exact path="/recruitment" component={RecruitmentPost} />
+                <Route exact path="/faq/post" component={() => (user ? <FAQPost /> : <Redirect to="/login" />)} />
+                <Route exact path="/company" component={() => (user ? <CompanyPost /> : <Redirect to="/login" />)} />
+                <Route exact path="/recruitment" component={() => (user ? <RecruitmentPost /> : <Redirect to="/login" />)} />
                 <Route component={Error} />
             </Switch>
             {successPath && <Footer />}

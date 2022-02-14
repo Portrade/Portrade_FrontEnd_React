@@ -58,14 +58,14 @@ export const companyApi = {
 
 export const recruitmentApi = {
     postRecruitment: (companyId, title, career, education, workType, pay, address, category, logo, url) => api.post(`/api/v1/recruitments/${companyId}`, { title, career, education, workType, pay, address, category, logo, url }),
-    getRecruitment: (page, size, area, job, title) =>
+    getRecruitment: (area, job, title, page = 1, size = 100) =>
         api.get("/api/v1/recruitments", {
             params: {
-                page,
-                size,
                 area,
                 job,
                 title,
+                page,
+                size,
             },
         }),
     getRecruitmentDetail: (id) => api.get(`/api/v1/recruitments/${id}`),
@@ -90,7 +90,7 @@ export const myPageApi = {
         // for (let val of formData.values()) {
         //     console.log(val);
         // }
-        
-        api.put("/api/v1/users/me/profile/image", formData)
+
+        api.put("/api/v1/users/me/profile/image", formData);
     },
 };
